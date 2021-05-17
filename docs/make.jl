@@ -1,6 +1,5 @@
 using SimpleAiboWebAPI
 using Documenter
-using DocStringExtensions
 
 DocMeta.setdocmeta!(SimpleAiboWebAPI, :DocTestSetup, :(using SimpleAiboWebAPI); recursive=true)
 
