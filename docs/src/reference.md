@@ -1,0 +1,84 @@
+
+List of APIs defined in [SimpleAiboWebAPI](https://github.com/hsugawa8651/SimpleAiboWebAPI.jl).
+
+
+## Setup APIs
+```@docs
+getDeviceList
+```
+
+```@docs
+getAccessToken
+```
+
+## Basic APIs
+
+```@docs
+getCurrentDeviceList
+```
+
+```@docs
+getDefaultDevice
+```
+
+```@docs
+getDefaultDeviceId
+```
+
+```@docs
+getDefaultDeviceNickname
+```
+
+```@docs
+findDevice
+```
+
+```@docs
+setDefaultDevice
+```
+
+### Action APIs
+
+```@docs
+askActionSimple
+```
+
+```@docs
+askAction
+```
+
+```@docs
+getExecution
+```
+
+## Advanced APIs
+
+- All the advanced API contain "api_name" inside.
+- All the advanced API have following three optional keyword arguments, as [`askAction`](@ref) has.
+  - target_deviceID
+  - target_nickname
+    - Above two arguments are hints to determine target device.
+  - timeoutLimit
+
+
+```@docs
+askHungryStatus
+```
+
+```@docs
+askSleepyStatus
+```
+
+```@docs
+askPostureStatus
+```
+
+```@docs
+askChangePosture
+```
+
+
+## Alphabetical Index
+
+```@index
+```

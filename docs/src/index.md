@@ -4,11 +4,16 @@ CurrentModule = SimpleAiboWebAPI
 
 # SimpleAiboWebAPI
 
-Documentation for [SimpleAiboWebAPI](https://github.com/hsugawa8651/SimpleAiboWebAPI.jl).
+Simple Web API to communicate with [Sony Aibo ERS-1000](https://us.aibo.com/) in [Julia language](https://julialang.org/).
 
-```@index
+```@raw html
+<p align="center">
+Julia meets Aibo !
+<br/>
+<img src="assets/JuliaMeetsAibo.png" alt="" title="Julia meets Aibo" width="450" />
+<br/>
+Aibo meets Julia !
+
+</p>
 ```
 
-```@autodocs
-Modules = [SimpleAiboWebAPI]
-```
