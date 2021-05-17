@@ -1,5 +1,9 @@
 # SimpleAiboWebAPI
 
+<p align="center">
+<img src="docs/src/assets/JuliaMeetsAibo.png" alt="Aibo meets Julia" width="600px">
+</p>
+
 Simple Web API to communicate with [Sony Aibo ERS-1000](https://electronics.sony.com/aibo/p/ers1000) by Julia language.
 
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://hsugawa8651.github.io/SimpleAiboWebAPI.jl/stable)
