@@ -24,18 +24,18 @@ If successful,
 * assigns the first element of `currentDevices` to `defaultDevice`, the local variable, if `currentDevices` is not empty.
 """
 function getDevices(accessToken::String)
-	get_url = join([ BASE_PATH, "devices" ], "/")
-	req = HTTP.get(get_url, theHeaders(accessToken) )
-	body = JSON.parse(String(req.body))
-	if length(body) == 0
-		return Dict()
-	end
-	global currentAccessToken = accessToken
-	global currentDevices = body["devices"]
-	if !isempty(currentDevices)
-		global defaultDevice = first(currentDevices)
-	end
-	currentDevices
+   get_url = join([ BASE_PATH, "devices" ], "/")
+   req = HTTP.get(get_url, theHeaders(accessToken) )
+   body = JSON.parse(String(req.body))
+   if length(body) == 0
+      return Dict()
+   end
+   global currentAccessToken = accessToken
+   global currentDevices = body["devices"]
+   if !isempty(currentDevices)
+      global defaultDevice = first(currentDevices)
+   end
+   currentDevices
 end
 
 
@@ -45,8 +45,8 @@ end
 returns the current access token, i.e., `currentAccessToken`, the local variable of this package.
 """
 function getAccessToken()
-	global currentAccessToken
-	currentAccessToken
+   global currentAccessToken
+   currentAccessToken
 end
 
 
@@ -56,19 +56,19 @@ end
 returns the current device list, i.e., `getCurrentDevices`, the local variable of this package.
 """
 function getCurrentDevices()
-	global currentDevices
-	currentDevices
+   global currentDevices
+   currentDevices
 end
 
 
 """
-	getDefaultDevice()
+   getDefaultDevice()
 
 returns the default device to which the WebAPI directs when target device is not specified in the call of `askAction` function.
 """
 function getDefaultDevice()
-	global defaultDevice
-	defaultDevice
+   global defaultDevice
+   defaultDevice
 end
 
 
@@ -78,8 +78,8 @@ end
 returns the deviceId of the default device.
 """
 function getDefaultDeviceId()
-	global defaultDevice
-	defaultDevice["deviceId"]
+   global defaultDevice
+   defaultDevice["deviceId"]
 end
 
 
@@ -89,8 +89,8 @@ end
 returns the nickname of the default device.
 """
 function getDefaultDeviceNickname()
-	global defaultDevice
-	defaultDevice["nickname"]
+   global defaultDevice
+   defaultDevice["nickname"]
 end
 
 
@@ -101,13 +101,13 @@ assigns the default device to the result of `findDevice(deviceId=target_deviceId
 - The default device remains unchanged if such a device is absent.
 """
 function setDefaultDevice(;target_deviceId=nothing, target_nickname=nothing)
-	device=findDevice(deviceId=target_deviceId, nickname=target_nickname)
-	isempty(device) && return defaultDevice
-	flag = all(k->(device[k]==defaultDevice[k]), ["deviceId","nickname"])
-	if !flag
-		global defaultDevice = device
-	end
-	return device
+   device=findDevice(deviceId=target_deviceId, nickname=target_nickname)
+   isempty(device) && return defaultDevice
+   flag = all(k->(device[k]==defaultDevice[k]), ["deviceId","nickname"])
+   if !flag
+      global defaultDevice = device
+   end
+   return device
 end
 
 
@@ -119,34 +119,34 @@ returns a device whose `deviceID` and/or `nickname` key(s) match(es) the corresp
 - Returns `Dict()` if such a device is absent. 
 """
 function findDevice(;deviceId=nothing, nickname=nothing)
-	(isnothing(deviceId)&&isnothing(nickname))&& @goto fail
-	global currentDevices
-	isempty(currentDevices) && @goto fail
-	if !isnothing(nickname)
-		index=findfirst(x->x["nickname"]==nickname, currentDevices)
-		isnothing(index) && @goto fail
-		device=currentDevices[index]
-		if !isnothing(deviceId)
-			device["deviceId"]==deviceId || @goto fail
-		end
-		return device
-	elseif !isnothing(deviceId)
-		index=findfirst(x->x["deviceId"]==deviceId, currentDevices)
-		isnothing(index) && @goto fail
-		device=currentDevices[index]
-		if !isnothing(nickname)
-			device["nickname"]==nickname || @goto fail
-		end
-		return device
-	end
+   (isnothing(deviceId)&&isnothing(nickname))&& @goto fail
+   global currentDevices
+   isempty(currentDevices) && @goto fail
+   if !isnothing(nickname)
+      index=findfirst(x->x["nickname"]==nickname, currentDevices)
+      isnothing(index) && @goto fail
+      device=currentDevices[index]
+      if !isnothing(deviceId)
+         device["deviceId"]==deviceId || @goto fail
+      end
+      return device
+   elseif !isnothing(deviceId)
+      index=findfirst(x->x["deviceId"]==deviceId, currentDevices)
+      isnothing(index) && @goto fail
+      device=currentDevices[index]
+      if !isnothing(nickname)
+         device["nickname"]==nickname || @goto fail
+      end
+      return device
+   end
 
-	@label fail
-		Dict()
+   @label fail
+      Dict()
 end
 
 
 function theHeaders(accessToken=currentAccessToken)
-	Dict("Authorization" => "Bearer:" * accessToken )
+   Dict("Authorization" => "Bearer:" * accessToken )
 end
 
 
@@ -172,18 +172,18 @@ asks a device to perform an action, and returns the result by `Dict()`.
 
 """
 function askAction(api_name, arguments = Dict(); 
-	target_deviceID=nothing,
-	target_nickname=nothing,
-	timeoutLimit=10)
-	device=getDefaultDevice()
-	if !isnothing(target_deviceID) || !isnothing(target_nickname)
-		device=findDevice(
-			deviceId=target_deviceID, 
-			nickname=target_nickname)
-	end
-	target_deviceId=device["deviceId"]
-	askActionSimple(api_name, arguments, 
-		target_deviceId, timeoutLimit)
+   target_deviceID=nothing,
+   target_nickname=nothing,
+   timeoutLimit=10)
+   device=getDefaultDevice()
+   if !isnothing(target_deviceID) || !isnothing(target_nickname)
+      device=findDevice(
+         deviceId=target_deviceID, 
+         nickname=target_nickname)
+   end
+   target_deviceId=device["deviceId"]
+   askActionSimple(api_name, arguments, 
+      target_deviceId, timeoutLimit)
 end
 
 
@@ -204,26 +204,26 @@ asks a device to perform an action, and returns the result by `Dict()`.
 - `timeoutLimit` specifies the limit of timeouts in seconds, and defaults to 10 (seconds).
 """
 function askActionSimple(api_name, arguments, 
-	target_deviceId,
-	timeoutLimit=10)
-	global currentAccessToken
+   target_deviceId,
+   timeoutLimit=10)
+   global currentAccessToken
 
-	post_url = join([ BASE_PATH, 
-		"devices", target_deviceId, "capabilities", 
-		api_name, "execute" ], "/" )
+   post_url = join([ BASE_PATH, 
+      "devices", target_deviceId, "capabilities", 
+      api_name, "execute" ], "/" )
 
-	if !isempty(arguments)
-		arguments = Dict("arguments" => arguments)
-	end
-	the_arguments = JSON.json(arguments) 
-	req = HTTP.post(post_url, theHeaders(), body=the_arguments ) 
-	post_result = JSON.parse(String(req.body))
-	executionId = post_result["executionId"]
-	if timeoutLimit <= 0
-		return Dict( "executionId" => executionId)
-	else
-		return getExecution(executionId, timeoutLimit)
-	end
+   if !isempty(arguments)
+      arguments = Dict("arguments" => arguments)
+   end
+   the_arguments = JSON.json(arguments) 
+   req = HTTP.post(post_url, theHeaders(), body=the_arguments ) 
+   post_result = JSON.parse(String(req.body))
+   executionId = post_result["executionId"]
+   if timeoutLimit <= 0
+      return Dict( "executionId" => executionId)
+   else
+      return getExecution(executionId, timeoutLimit)
+   end
 end
 
 
@@ -238,23 +238,23 @@ receives the result of `executionId`.
 """
 function getExecution(executionId, timeoutLimit=10)
 
-	get_result_url = join( [BASE_PATH, "executions", executionId], "/" )
+   get_result_url = join( [BASE_PATH, "executions", executionId], "/" )
 
-	for timeout in 0:timeoutLimit
-		req = HTTP.get(get_result_url, theHeaders() )
-		get_result = JSON.parse(String(req.body))
-		get_status = get_result["status"]
-		
-		if     get_status == "SUCCEEDED"
-			return get_result
-		elseif get_status == "FAILED"
-			return get_result
-		else
-			sleep(1)
-		end
-	end
+   for timeout in 0:timeoutLimit
+      req = HTTP.get(get_result_url, theHeaders() )
+      get_result = JSON.parse(String(req.body))
+      get_status = get_result["status"]
+      
+      if     get_status == "SUCCEEDED"
+         return get_result
+      elseif get_status == "FAILED"
+         return get_result
+      else
+         sleep(1)
+      end
+   end
 
-	println("time out")
-	return Dict()
+   println("time out")
+   return Dict()
 end
 

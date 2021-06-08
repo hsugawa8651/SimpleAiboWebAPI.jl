@@ -12,11 +12,11 @@ asks hungry_status.
 This method is equivalent to `askAction("hungry_status")`
 """
 function askHungryStatus(;
-	target_deviceID=nothing,
-	target_nickname=nothing,
-	timeoutLimit=10)
-	askAction("hungry_status",
-		target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+   target_deviceID=nothing,
+   target_nickname=nothing,
+   timeoutLimit=10)
+   askAction("hungry_status",
+     target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
 
 
@@ -32,11 +32,11 @@ This method is equivalent to `askAction("sleepy_status")`
 
 """
 function askSleepyStatus(;
-	target_deviceID=nothing,
-	target_nickname=nothing,
-	timeoutLimit=10)
-	askAction("sleepy_status",
-		target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+   target_deviceID=nothing,
+   target_nickname=nothing,
+   timeoutLimit=10)
+   askAction("sleepy_status",
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
 
 
@@ -52,11 +52,11 @@ This method is equivalent to `askAction("posture_status")`
 
 """
 function askPostureStatus(;
-	target_deviceID=nothing,
-	target_nickname=nothing,
-	timeoutLimit=10)
-	askAction("posture_status",
-		target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+   target_deviceID=nothing,
+   target_nickname=nothing,
+   timeoutLimit=10)
+   askAction("posture_status",
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
 
 
@@ -86,15 +86,15 @@ This method is equivalent to `askAction("change_posture", Dict(FinalPosture=>fin
 
 """
 function askChangePosture(
-	finalPosture="sit",
-	enqueue=false;
-	target_deviceID=nothing,
-	target_nickname=nothing,
-	timeoutLimit=10)
-	arguments = Dict("FinalPosture"=> finalPosture)
-	if enqueue
-		arguments["Enqueue"]=enqueue
-	end
-	askAction("change_posture", arguments, 
-		target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+   finalPosture="sit",
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+   timeoutLimit=10)
+   arguments = Dict("FinalPosture"=> finalPosture)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("change_posture", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
