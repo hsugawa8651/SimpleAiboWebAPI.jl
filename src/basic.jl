@@ -5,25 +5,25 @@ using JSON
 using HTTP
 
 global currentAccessToken=""
-global currentDeviceList = []
+global currentDevices = []
 global defaultDevice = Dict()
 
 BASE_PATH = "https://public.api.aibo.com/v1"
 
 
 """
-    getDeviceList(accessToken)
+    getDevices(accessToken)
 
 tries to get device list associated to `accessToken`.
 
 If successful, 
 * returns device list of type `Array{Dict}`.
 * assigns `accessToken` to `currentAccessToken`, the local variable.
-* if non-empty device list is found, updates `currentDeviceList` and `defaultDevice`. Namely,
-* assigns found device list to `currentDeviceList`, the local variable.
-* assigns the first element of `currentDeviceList` to `defaultDevice`, the local variable, if `currentDeviceList` is not empty.
+* if non-empty device list is found, updates `currentDevices` and `defaultDevice`. Namely,
+* assigns found device list to `currentDevices`, the local variable.
+* assigns the first element of `currentDevices` to `defaultDevice`, the local variable, if `currentDevices` is not empty.
 """
-function getDeviceList(accessToken::String)
+function getDevices(accessToken::String)
 	get_url = join([ BASE_PATH, "devices" ], "/")
 	req = HTTP.get(get_url, theHeaders(accessToken) )
 	body = JSON.parse(String(req.body))
@@ -31,11 +31,11 @@ function getDeviceList(accessToken::String)
 		return Dict()
 	end
 	global currentAccessToken = accessToken
-	global currentDeviceList = body["devices"]
-	if !isempty(currentDeviceList)
-		global defaultDevice = first(currentDeviceList)
+	global currentDevices = body["devices"]
+	if !isempty(currentDevices)
+		global defaultDevice = first(currentDevices)
 	end
-	currentDeviceList
+	currentDevices
 end
 
 
@@ -51,13 +51,13 @@ end
 
 
 """
-    getCurrentDeviceList()
+    getCurrentDevices()
 
-returns the current device list, i.e., `getCurrentDeviceList`, the local variable of this package.
+returns the current device list, i.e., `getCurrentDevices`, the local variable of this package.
 """
-function getCurrentDeviceList()
-	global currentDeviceList
-	currentDeviceList
+function getCurrentDevices()
+	global currentDevices
+	currentDevices
 end
 
 
@@ -120,20 +120,20 @@ returns a device whose `deviceID` and/or `nickname` key(s) match(es) the corresp
 """
 function findDevice(;deviceId=nothing, nickname=nothing)
 	(isnothing(deviceId)&&isnothing(nickname))&& @goto fail
-	global currentDeviceList
-	isempty(currentDeviceList) && @goto fail
+	global currentDevices
+	isempty(currentDevices) && @goto fail
 	if !isnothing(nickname)
-		index=findfirst(x->x["nickname"]==nickname, currentDeviceList)
+		index=findfirst(x->x["nickname"]==nickname, currentDevices)
 		isnothing(index) && @goto fail
-		device=currentDeviceList[index]
+		device=currentDevices[index]
 		if !isnothing(deviceId)
 			device["deviceId"]==deviceId || @goto fail
 		end
 		return device
 	elseif !isnothing(deviceId)
-		index=findfirst(x->x["deviceId"]==deviceId, currentDeviceList)
+		index=findfirst(x->x["deviceId"]==deviceId, currentDevices)
 		isnothing(index) && @goto fail
-		device=currentDeviceList[index]
+		device=currentDevices[index]
 		if !isnothing(nickname)
 			device["nickname"]==nickname || @goto fail
 		end

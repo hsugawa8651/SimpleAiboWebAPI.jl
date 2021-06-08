@@ -9,7 +9,7 @@ Sample code:
 using SimpleAiboWebAPI
 
 yourAccessToken = ""  # アクセストークン文字列
-getDeviceList(yourAccessToken)  # アクセストークンを登録し、デバイスリストを取得します
+getDevices(yourAccessToken)  # アクセストークンを登録し、デバイスリストを取得します
 
 # 既定の通信先デバイスは、デバイスリストで最初に見つかったデバイスです
 askAction("hungry_status")
