@@ -9,7 +9,7 @@ Sample code:
 using SimpleAiboWebAPI
 
 yourAccessToken = ""  # your Access Token here
-getDeviceList(yourAccessToken)  # Register your access token, and receive device list
+getDevices(yourAccessToken)  # Register your access token, and receive device list
 
 # The default target device is the first device found in the device list.
 askAction("hungry_status")

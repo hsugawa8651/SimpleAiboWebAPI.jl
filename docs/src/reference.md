@@ -4,7 +4,7 @@ List of APIs defined in [SimpleAiboWebAPI](https://github.com/hsugawa8651/Simple
 
 ## Setup APIs
 ```@docs
-getDeviceList
+getDevices
 ```
 
 ```@docs
@@ -14,7 +14,7 @@ getAccessToken
 ## Basic APIs
 
 ```@docs
-getCurrentDeviceList
+getCurrentDevices
 ```
 
 ```@docs

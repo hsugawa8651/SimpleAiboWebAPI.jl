@@ -10,7 +10,7 @@ module SimpleAiboWebAPI
 include("basic.jl")
 
 export 
-	getDeviceList, getAccessToken, getCurrentDeviceList,
+	getDevices, getAccessToken, getCurrentDevices,
 	getDefaultDevice, getDefaultDeviceId, getDefaultDeviceNickname,
 	setDefaultDevice, findDevice,
 	askActionSimple, askAction, getExecution

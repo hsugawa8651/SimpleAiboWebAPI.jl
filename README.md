@@ -22,7 +22,7 @@ Refer to [the documentation for Sony Aibo Web API](https://developer.aibo.com/us
 yourAccessToken = ""  # Consult https://us.aibo.com/developer/
 
 using SimpleAiboWebAPI
-getDeviceList(yourAccessToken)
+getDevices(yourAccessToken)
 askAction("hungry_status")
 askAction("sleepy_status")
 askAction("change_posture", Dict("FinalPosture" => "sit"))
