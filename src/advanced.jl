@@ -456,3 +456,23 @@ function askVoiceCommandStatus(;
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
 
+## Person related APIs
+
+"""
+    askFindPerson(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `find_person`.
+
+This method is equivalent to `askAction("find_person")`
+"""
+function askFindPerson(;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+   timeoutLimit=10)
+   askAction("find_person",
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+

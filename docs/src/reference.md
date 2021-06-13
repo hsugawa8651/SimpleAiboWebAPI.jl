@@ -127,6 +127,12 @@ askNameCalledStatus
 askVoiceCommandStatus
 ```
 
+### Person related APIs
+
+```@docs
+askFindPerson
+```
+
 
 ## Alphabetical Index
 
