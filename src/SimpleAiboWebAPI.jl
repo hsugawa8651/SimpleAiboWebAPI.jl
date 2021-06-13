@@ -20,11 +20,11 @@ export
 include("advanced.jl")
 
 export 
-	askHungryStatus, askSleepyStatus,
-	askPawPadsStatus,
-	askBodyTouchedStatus,
-	askPostureStatus, askChangePosture, askStay,
-	askBitingStatus, askPlayBone, askPlayDice, askPlayMotion,
-	askNameCalledStatus, askVoiceCommandStatus
+   askHungryStatus, askSleepyStatus,
+   askPawPadsStatus,
+   askBodyTouchedStatus,
+   askPostureStatus, askChangePosture, askMoveHead, askStay,
+   askBitingStatus, askPlayBone, askPlayDice, askPlayMotion,
+   askNameCalledStatus, askVoiceCommandStatus
 
 end

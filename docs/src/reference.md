@@ -55,10 +55,10 @@ getExecution
 
 - All the advanced API contain "api_name" inside.
 - All the advanced API have following three optional keyword arguments, as [`askAction`](@ref) has.
-  - target_deviceID
-  - target_nickname
+  - `target_deviceID`
+  - `target_nickname`
     - Above two arguments are hints to determine target device.
-  - timeoutLimit
+  - `timeoutLimit`
 
 
 ### Status related APIs
@@ -87,6 +87,10 @@ askPostureStatus
 
 ```@docs
 askChangePosture
+```
+
+```@docs
+askMoveHead
 ```
 
 ```@docs
