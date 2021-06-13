@@ -25,6 +25,6 @@ export
 	askBodyTouchedStatus,
 	askPostureStatus, askChangePosture,
 	askBitingStatus, askPlayBone, askPlayDice, askPlayMotion,
-	askNameCalledStatus
+	askNameCalledStatus, askVoiceCommandStatus
 
 end

@@ -9,7 +9,7 @@
 		target_nickname=nothing,
 		timeoutLimit=10)
 
-asks hungry_status.
+asks `hungry_status`.
 
 This method is equivalent to `askAction("hungry_status")`
 """
@@ -28,7 +28,7 @@ end
 		target_nickname=nothing,
 		timeoutLimit=10)
 
-asks sleepy_status.
+asks `sleepy_status`.
 
 This method is equivalent to `askAction("sleepy_status")`
 
@@ -47,7 +47,7 @@ end
 		target_nickname=nothing,
 		timeoutLimit=10)
 
-asks body_touched_status.
+asks `body_touched_status`.
 
 This method is equivalent to `askAction("body_touched_status")`
 
@@ -67,7 +67,7 @@ end
 		target_nickname=nothing,
 		timeoutLimit=10)
 
-asks paw_pads_status.
+asks `paw_pads_status`.
 
 This method is equivalent to `askAction("paw_pads_status")`
 
@@ -88,7 +88,7 @@ end
 		target_nickname=nothing,
 		timeoutLimit=10)
 
-asks posture_status.
+asks `posture_status`.
 
 This method is equivalent to `askAction("posture_status")`
 
@@ -110,7 +110,7 @@ end
 		target_nickname=nothing,
 		timeoutLimit=10)
 
-asks change_posture.
+asks `change_posture`.
 
 - `finalPosture` should be one of the following string:
   - `back`
@@ -149,7 +149,7 @@ end
 		target_nickname=nothing,
 		timeoutLimit=10)
 
-asks biting_status.
+asks `biting_status`.
 
 This method is equivalent to `askAction("biting_status")`
 
@@ -171,7 +171,7 @@ end
 		target_nickname=nothing,
 		timeoutLimit=10)
 
-asks play_bone.
+asks `play_bone`.
 
 
 This method is equivalent to `askAction("play_bone", Dict(Category=>holdMouth, Enqueue=>enqueue))`
@@ -200,7 +200,7 @@ end
 		target_nickname=nothing,
 		timeoutLimit=10)
 
-asks change_posture.
+asks `change_posture`.
 
 - `category` should be one of the following string:
   - `holdMouthDice`
@@ -236,7 +236,7 @@ end
 		target_nickname=nothing,
 		timeoutLimit=10)
 
-asks play_motion.
+asks `play_motion`.
 
 - `category` should be one of the following string. Optional `Mode` parameters other than "NONE" is also listed.
   - `agree`
@@ -355,7 +355,7 @@ end
 		target_nickname=nothing,
 		timeoutLimit=10)
 
-asks name_called_status.
+asks `name_called_status`.
 
 This method is equivalent to `askAction("name_called_status")`
 """
@@ -364,6 +364,25 @@ function askNameCalledStatus(;
    target_nickname=nothing,
    timeoutLimit=10)
    askAction("name_called_status",
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+	 askVoiceCommandStatus(;
+		target_deviceID=nothing,
+		target_nickname=nothing,
+		timeoutLimit=10)
+
+asks `voice_command_status`.
+
+This method is equivalent to `askAction("voice_command_status")`
+"""
+function askVoiceCommandStatus(;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+   timeoutLimit=10)
+   askAction("voice_command_status",
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
 
