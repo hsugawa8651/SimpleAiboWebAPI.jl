@@ -4,10 +4,10 @@
 ## Status related APIs
 
 """
-	 askHungryStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askHungryStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `hungry_status`.
 
@@ -23,10 +23,10 @@ end
 
 
 """
-	 askSleepyStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askSleepyStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `sleepy_status`.
 
@@ -42,10 +42,10 @@ function askSleepyStatus(;
 end
 
 """
-	 askBodyTouchedStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askBodyTouchedStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `body_touched_status`.
 
@@ -62,10 +62,10 @@ end
 
 
 """
-	 askPawPadsStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askPawPadsStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `paw_pads_status`.
 
@@ -83,10 +83,10 @@ end
 ## Posture related APIs
 
 """
-	 askPostureStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askPostureStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `posture_status`.
 
@@ -103,12 +103,12 @@ end
 
 
 """
-	 askChangePosture(
-		finalPosture,
-		enquee=false;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askChangePosture(
+      finalPosture,
+      enquee=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `change_posture`.
 
@@ -141,13 +141,83 @@ function askChangePosture(
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
 
+
+"""
+    askMoveHead(
+      azimuth,
+      elevation,
+      velocity,
+      enquee=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `move_head`.
+
+- `azimuth` : -80 -- 80 (degree)
+- `elevation` : -40 -- 40 (degree)
+- `velocity` : 10 -- 80 (deg/sec)
+
+This method is equivalent to `askAction("move_head", Dict(Duration=>duration, Enqueue=>enqueue))`
+
+"""
+function askMoveHead(
+   azimuth,
+   elevation,
+   velocity,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "Azimuth" => azimuth,
+      "elevation" => elevation,
+      "Velocity" => velocity)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("move_head", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+
+"""
+    askStay(
+      duration,
+      enquee=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `stay` for `duration` seconds.
+
+- `duration` : 0--360 (seconds)
+
+This method is equivalent to `askAction("stay", Dict(Duration=>duration, Enqueue=>enqueue))`
+
+"""
+function askStay(
+   duration=60,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict("Duration"=> duration)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("stay", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
 ## Play related APIs
 
 """
-	 askBitingStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askBitingStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `biting_status`.
 
@@ -164,12 +234,12 @@ end
 
 
 """
-	 askPlayBone(
-		enquee=false;
-		category="holdMouth",
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askPlayBone(
+      enquee=false;
+      category="holdMouth",
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `play_bone`.
 
@@ -193,12 +263,12 @@ end
 
 
 """
-	 askPlayDice(
-		category="holdMouthDice",
-		enquee=false;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askPlayDice(
+      category="holdMouthDice",
+      enquee=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `change_posture`.
 
@@ -228,13 +298,13 @@ function askPlayDice(
 end
 
 """
-	 askPlayMotion(
-		category="agree",
-		enquee=false;
+    askPlayMotion(
+      category="agree",
+      enquee=false;
       Mode="NONE",
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `play_motion`.
 
@@ -350,10 +420,10 @@ end
 ## Voice related APIs
 
 """
-	 askNameCalledStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askNameCalledStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `name_called_status`.
 
@@ -369,10 +439,10 @@ end
 
 
 """
-	 askVoiceCommandStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askVoiceCommandStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `voice_command_status`.
 
