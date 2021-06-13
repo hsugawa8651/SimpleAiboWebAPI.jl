@@ -130,6 +130,11 @@ askVoiceCommandStatus
 ### Person related APIs
 
 ```@docs
+askApproachPerson
+```
+
+
+```@docs
 askFindPerson
 ```
 

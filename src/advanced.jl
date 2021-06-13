@@ -181,7 +181,6 @@ function askMoveHead(
 end
 
 
-
 """
     askStay(
       duration,
@@ -212,6 +211,7 @@ function askStay(
 end
 
 ## Play related APIs
+
 
 """
     askBitingStatus(;
@@ -296,6 +296,7 @@ function askPlayDice(
    askAction("play_dice", arguments, 
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
+
 
 """
     askPlayMotion(
@@ -419,6 +420,7 @@ end
 
 ## Voice related APIs
 
+
 """
     askNameCalledStatus(;
       target_deviceID=nothing,
@@ -457,6 +459,37 @@ function askVoiceCommandStatus(;
 end
 
 ## Person related APIs
+
+
+"""
+    askApproachPerson(
+      distanceFromTarget=1,
+      enquee=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `approach_person`.
+
+- `distanceFromTarget` : 0.4 -- 2 (meter)
+
+This method is equivalent to `askAction("approach_person", Dict(DistanceFromTarget=>distanceFromTarget, Enqueue=>enqueue))`
+
+"""
+function askApproachPerson(
+   distanceFromTarget=1,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+   timeoutLimit=10)
+   arguments = Dict("DistanceFromTarget"=> distanceFromTarget)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("approach_person", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
 
 """
     askFindPerson(;
