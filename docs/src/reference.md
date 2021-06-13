@@ -73,6 +73,10 @@ askSleepyStatus
 askBodyTouchedStatus
 ```
 
+```@docs
+askPawPadsStatus
+```
+
 
 ```@docs
 askPostureStatus
