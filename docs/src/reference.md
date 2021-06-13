@@ -133,6 +133,10 @@ askVoiceCommandStatus
 askApproachPerson
 ```
 
+```@docs
+askChasePerson
+```
+
 
 ```@docs
 askFindPerson
