@@ -158,3 +158,30 @@ function askBitingStatus(;
 	askAction("biting_status",
 		target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
+
+
+"""
+    askPlayBone(
+      enquee=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks play_bone.
+
+
+This method is equivalent to `askAction("play_bone", Dict(Category=>holdMouth, Enqueue=>enqueue))`
+
+"""
+function askPlayBone(
+	enqueue=false;
+	target_deviceID=nothing,
+	target_nickname=nothing,
+	timeoutLimit=10)
+	arguments = Dict("Category"=> "holdMouth")
+	if enqueue
+		arguments["Enqueue"]=enqueue
+	end
+	askAction("play_bone", arguments, 
+		target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end

@@ -86,9 +86,14 @@ askPostureStatus
 askChangePosture
 ```
 
+### Play related
 
 ```@docs
 askBitingStatus
+```
+
+```@docs
+askPlayBone
 ```
 
 
