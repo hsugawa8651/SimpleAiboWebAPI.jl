@@ -4,10 +4,10 @@
 ## Status related APIs
 
 """
-	 askHungryStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askHungryStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `hungry_status`.
 
@@ -23,10 +23,10 @@ end
 
 
 """
-	 askSleepyStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askSleepyStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `sleepy_status`.
 
@@ -42,10 +42,10 @@ function askSleepyStatus(;
 end
 
 """
-	 askBodyTouchedStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askBodyTouchedStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `body_touched_status`.
 
@@ -62,10 +62,10 @@ end
 
 
 """
-	 askPawPadsStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askPawPadsStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `paw_pads_status`.
 
@@ -83,10 +83,10 @@ end
 ## Posture related APIs
 
 """
-	 askPostureStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askPostureStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `posture_status`.
 
@@ -103,12 +103,12 @@ end
 
 
 """
-	 askChangePosture(
-		finalPosture,
-		enquee=false;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askChangePosture(
+      finalPosture,
+      enquee=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `change_posture`.
 
@@ -144,10 +144,10 @@ end
 ## Play related APIs
 
 """
-	 askBitingStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askBitingStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `biting_status`.
 
@@ -164,12 +164,12 @@ end
 
 
 """
-	 askPlayBone(
-		enquee=false;
-		category="holdMouth",
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askPlayBone(
+      enquee=false;
+      category="holdMouth",
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `play_bone`.
 
@@ -193,12 +193,12 @@ end
 
 
 """
-	 askPlayDice(
-		category="holdMouthDice",
-		enquee=false;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askPlayDice(
+      category="holdMouthDice",
+      enquee=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `change_posture`.
 
@@ -228,13 +228,13 @@ function askPlayDice(
 end
 
 """
-	 askPlayMotion(
-		category="agree",
-		enquee=false;
+    askPlayMotion(
+      category="agree",
+      enquee=false;
       Mode="NONE",
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `play_motion`.
 
@@ -350,10 +350,10 @@ end
 ## Voice related APIs
 
 """
-	 askNameCalledStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askNameCalledStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `name_called_status`.
 
@@ -369,10 +369,10 @@ end
 
 
 """
-	 askVoiceCommandStatus(;
-		target_deviceID=nothing,
-		target_nickname=nothing,
-		timeoutLimit=10)
+    askVoiceCommandStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
 
 asks `voice_command_status`.
 
