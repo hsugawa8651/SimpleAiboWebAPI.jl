@@ -21,6 +21,7 @@ include("advanced.jl")
 
 export 
 	askHungryStatus, askSleepyStatus,
+	askBodyTouchedStatus,
 	askPostureStatus, askChangePosture
 
 end
