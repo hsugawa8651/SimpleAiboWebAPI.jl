@@ -87,6 +87,11 @@ askChangePosture
 ```
 
 
+```@docs
+askBitingStatus
+```
+
+
 ## Alphabetical Index
 
 ```@index

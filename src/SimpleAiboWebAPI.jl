@@ -23,6 +23,7 @@ export
 	askHungryStatus, askSleepyStatus,
 	askPawPadsStatus,
 	askBodyTouchedStatus,
-	askPostureStatus, askChangePosture
+	askPostureStatus, askChangePosture,
+	askBitingStatus
 
 end

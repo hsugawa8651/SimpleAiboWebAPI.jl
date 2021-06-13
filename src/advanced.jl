@@ -137,3 +137,24 @@ function askChangePosture(
 	askAction("change_posture", arguments, 
 		target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
+
+
+
+"""
+    askBitingStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks biting_status.
+
+This method is equivalent to `askAction("biting_status")`
+
+"""
+function askBitingStatus(;
+	target_deviceID=nothing,
+	target_nickname=nothing,
+	timeoutLimit=10)
+	askAction("biting_status",
+		target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
