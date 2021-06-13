@@ -96,6 +96,10 @@ askBitingStatus
 askPlayBone
 ```
 
+```@docs
+askPlayDice
+```
+
 
 ## Alphabetical Index
 
