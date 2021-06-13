@@ -61,6 +61,8 @@ getExecution
   - timeoutLimit
 
 
+### Status related APIs
+
 ```@docs
 askHungryStatus
 ```
@@ -70,11 +72,50 @@ askSleepyStatus
 ```
 
 ```@docs
+askBodyTouchedStatus
+```
+
+```@docs
+askPawPadsStatus
+```
+
+### Posture related APIs
+
+```@docs
 askPostureStatus
 ```
 
 ```@docs
 askChangePosture
+```
+
+### Play related APIs
+
+```@docs
+askBitingStatus
+```
+
+```@docs
+askPlayBone
+```
+
+```@docs
+askPlayDice
+```
+
+```@docs
+askPlayMotion
+```
+
+
+### Voice related APIs
+
+```@docs
+askNameCalledStatus
+```
+
+```@docs
+askVoiceCommandStatus
 ```
 
 
