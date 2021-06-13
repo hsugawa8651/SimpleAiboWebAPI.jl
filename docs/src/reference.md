@@ -86,7 +86,7 @@ askPostureStatus
 askChangePosture
 ```
 
-### Play related
+### Play related APIs
 
 ```@docs
 askBitingStatus
@@ -103,6 +103,14 @@ askPlayDice
 ```@docs
 askPlayMotion
 ```
+
+
+### Voice related APIs
+
+```@docs
+askNameCalledStatus
+```
+
 
 ## Alphabetical Index
 

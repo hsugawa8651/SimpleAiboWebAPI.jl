@@ -1,6 +1,8 @@
 
 # Advanced APIs
 
+## Status related APIs
+
 """
 	 askHungryStatus(;
 		target_deviceID=nothing,
@@ -78,6 +80,7 @@ function askPawPadsStatus(;
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
 
+## Posture related APIs
 
 """
 	 askPostureStatus(;
@@ -138,7 +141,7 @@ function askChangePosture(
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
 
-
+## Play related APIs
 
 """
 	 askBitingStatus(;
@@ -343,3 +346,24 @@ function askPlayMotion(
    askAction("play_motion", arguments, 
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
+
+## Voice related APIs
+
+"""
+	 askNameCalledStatus(;
+		target_deviceID=nothing,
+		target_nickname=nothing,
+		timeoutLimit=10)
+
+asks name_called_status.
+
+This method is equivalent to `askAction("name_called_status")`
+"""
+function askNameCalledStatus(;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+   timeoutLimit=10)
+   askAction("name_called_status",
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
