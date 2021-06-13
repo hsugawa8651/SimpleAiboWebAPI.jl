@@ -23,7 +23,7 @@ export
 	askHungryStatus, askSleepyStatus,
 	askPawPadsStatus,
 	askBodyTouchedStatus,
-	askPostureStatus, askChangePosture,
+	askPostureStatus, askChangePosture, askStay,
 	askBitingStatus, askPlayBone, askPlayDice, askPlayMotion,
 	askNameCalledStatus, askVoiceCommandStatus
 

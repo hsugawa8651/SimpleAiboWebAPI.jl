@@ -141,6 +141,36 @@ function askChangePosture(
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
 
+
+"""
+    askStay(
+      duration,
+      enquee=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `stay` for `duration` seconds.
+
+- `duration` : 0--360 (seconds)
+
+This method is equivalent to `askAction("stay", Dict(Duration=>duration, Enqueue=>enqueue))`
+
+"""
+function askStay(
+   duration=60,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict("Duration"=> duration)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("stay", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
 ## Play related APIs
 
 """

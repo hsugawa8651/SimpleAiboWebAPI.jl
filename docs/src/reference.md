@@ -89,6 +89,11 @@ askPostureStatus
 askChangePosture
 ```
 
+```@docs
+askStay
+```
+
+
 ### Play related APIs
 
 ```@docs
