@@ -100,6 +100,9 @@ askPlayBone
 askPlayDice
 ```
 
+```@docs
+askPlayMotion
+```
 
 ## Alphabetical Index
 
