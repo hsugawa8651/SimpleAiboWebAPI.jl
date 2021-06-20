@@ -12,7 +12,7 @@ export
    askExplore, askMoveToPosition,
    askTurnAround, askMoveAlongCircle, askMoveDirection,
    askMoveForward, askMoveSideways,
-   askFoundObjectsStatus, askApproachObject
+   askFoundObjectsStatus, askApproachObject, askChaseObject
 
 ## Status related APIs
 
@@ -848,5 +848,42 @@ function askApproachObject(
       arguments["Enqueue"]=enqueue
    end
    askAction("approach_object", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askChaseObject(
+      targetType,
+      chasingDurationMsec=30*1000,
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `chase_object`.
+
+- `targetType` : one of the following constants:
+  - `aibo`
+  - `aibone`
+  - `dice`
+  - `pinkball`
+- `chasingDurationMsec` : 0 -- 360000 (milliseconds)
+
+This method is equivalent to `askAction("chase_object", Dict(TargetType=>targetType, ChasingDurationMsec=> chasingDurationMsec, Enqueue=>enqueue))`
+"""
+function askChaseObject(
+   targetType,
+   chasingDurationMsec=30*1000,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "TargetType"=> targetType,
+      "ChasingDurationMsec"=> chasingDurationMsec)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("chase_object", arguments, 
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end

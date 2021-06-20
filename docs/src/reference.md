@@ -180,6 +180,10 @@ askFoundObjectsStatus
 
 ```@docs
 askApproachObject
+
+```
+```@docs
+askChaseObject
 ```
 
 ## Alphabetical Index
