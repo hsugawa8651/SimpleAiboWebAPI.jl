@@ -168,6 +168,10 @@ askMoveDirection
 askMoveForward
 ```
 
+```@docs
+askMoveSideways
+```
+
 ## Alphabetical Index
 
 ```@index

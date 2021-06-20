@@ -11,7 +11,7 @@ export
    askApproachPerson, askChasePerson, askFindPerson,
    askExplore, askMoveToPosition,
    askTurnAround, askMoveAlongCircle, askMoveDirection,
-   askMoveForward
+   askMoveForward, askMoveSideways
 
 ## Status related APIs
 
@@ -755,5 +755,39 @@ function askMoveForward(
       arguments["Enqueue"]=enqueue
    end
    askAction("move_forward", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askMoveSideways(
+      walkSpeed=1,
+      walkDistance=0.5,
+      enqueue=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `move_sideways`.
+
+- `walkSpeed`    : one of 0 (slow), 1, 2 (fast)
+- `walkDistance` : -6 -- 6 (meter)
+
+This method is equivalent to `askAction("move_sideways", Dict(WalkSpeed=> walkSpeed, WalkDistance=> walkDistance, Enqueue=>enqueue))`
+"""
+function askMoveSideways(
+   walkSpeed=1,
+   walkDistance=0.5,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "WalkSpeed"=> walkSpeed,
+      "WalkDistance"=> walkDistance)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("move_sideways", arguments, 
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
