@@ -1,6 +1,15 @@
 
 # Advanced APIs
 
+export 
+   askHungryStatus, askSleepyStatus,
+   askPawPadsStatus,
+   askBodyTouchedStatus,
+   askPostureStatus, askChangePosture, askMoveHead, askStay,
+   askBitingStatus, askPlayBone, askPlayDice, askPlayMotion,
+   askNameCalledStatus, askVoiceCommandStatus,
+   askApproachPerson, askChasePerson, askFindPerson
+
 ## Status related APIs
 
 """

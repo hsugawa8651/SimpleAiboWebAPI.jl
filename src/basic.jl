@@ -1,6 +1,13 @@
 
 # Basic APIs
 
+export 
+   getDevices, getAccessToken, getCurrentDevices,
+   getDefaultDevice, getDefaultDeviceId, getDefaultDeviceNickname,
+   setDefaultDevice, findDevice,
+   askActionSimple, askAction, getExecution
+
+
 using JSON
 using HTTP
 
