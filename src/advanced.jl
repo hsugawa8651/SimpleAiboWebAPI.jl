@@ -11,7 +11,10 @@ export
    askApproachPerson, askChasePerson, askFindPerson,
    askExplore, askMoveToPosition,
    askTurnAround, askMoveAlongCircle, askMoveDirection,
-   askMoveForward, askMoveSideways
+   askMoveForward, askMoveSideways,
+   askFoundObjectsStatus, askApproachObject, askChaseObject, 
+   askFindObject, askGetCloseToObject,
+   askKickObject, askReleaseObject
 
 ## Status related APIs
 
@@ -554,6 +557,8 @@ function askFindPerson(;
 end
 
 
+### Position related APIs
+
 """
     askExplore(
       duration=60,
@@ -585,7 +590,7 @@ end
 
 """
     askMoveToPosition(
-      targetType,
+      targetType="charging_station",
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -600,7 +605,7 @@ asks `move_to_position`.
 This method is equivalent to `askAction("move_to_position", Dict(TargetType=>targetType, Enqueue=>enqueue))`
 """
 function askMoveToPosition(
-   targetType,
+   targetType="charging_station",
    enqueue=false;
    target_deviceID=nothing,
    target_nickname=nothing,
@@ -613,6 +618,8 @@ function askMoveToPosition(
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
 
+
+### Moving related APIs
 
 """
     askTurnAround(
@@ -789,5 +796,234 @@ function askMoveSideways(
       arguments["Enqueue"]=enqueue
    end
    askAction("move_sideways", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+### Object related APIs
+
+
+"""
+    askFoundObjectsStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `found_objects_status`.
+
+This method is equivalent to `askAction("found_objects_status")`
+"""
+function askFoundObjectsStatus(;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+   timeoutLimit=10)
+   askAction("found_objects_status",
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askApproachObject(
+      targetType="pinkball",
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `approach_object`.
+
+- `targetType` : one of the following constants:
+  - `aibo`
+  - `aibone`
+  - `dice`
+  - `pinkball`
+
+This method is equivalent to `askAction("approach_object", Dict(TargetType=>targetType, Enqueue=>enqueue))`
+"""
+function askApproachObject(
+   targetType="pinkball",
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict("TargetType"=> targetType)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("approach_object", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askChaseObject(
+      targetType="pinkball",
+      chasingDurationMsec=30*1000,
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `chase_object`.
+
+- `targetType` : one of the following constants:
+  - `aibo`
+  - `aibone`
+  - `dice`
+  - `pinkball`
+- `chasingDurationMsec` : 0 -- 360000 (milliseconds)
+
+This method is equivalent to `askAction("chase_object", Dict(TargetType=>targetType, ChasingDurationMsec=> chasingDurationMsec, Enqueue=>enqueue))`
+"""
+function askChaseObject(
+   targetType="pinkball",
+   chasingDurationMsec=30*1000,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "TargetType"=> targetType,
+      "ChasingDurationMsec"=> chasingDurationMsec)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("chase_object", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askFindObject(
+      targetType="pinkball",
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `find_object`.
+
+- `targetType` : one of the following constants:
+  - `aibo`
+  - `aibone`
+  - `dice`
+  - `pinkball`
+
+This method is equivalent to `askAction("find_object", Dict(TargetType=>targetType, Enqueue=>enqueue))`
+"""
+function askFindObject(
+   targetType="pinkball",
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict("TargetType"=> targetType)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("find_object", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askGetCloseToObject(
+      targetType="pinkball",
+      distance=0.2,
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `get_close_to_object`.
+Invoke this method after `askApproachObject`.
+
+- `targetType` : one of the following constants:
+  - `aibo`
+  - `aibone`
+  - `dice`
+  - `pinkball`
+
+- `distance` : 0.1 -- 0.3 (meter)
+
+This method is equivalent to `askAction("get_close_to_object", Dict(TargetType=>targetType, Distance=>distance, Enqueue=>enqueue))`
+"""
+function askGetCloseToObject(
+   targetType="pinkball",
+   distance=0.2,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "TargetType"=> targetType,
+      "Distance"=> distance)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("get_close_to_object", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askKickObject(
+      targetType="pinkball",
+      kickMotion="kick",
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `kick_object`.
+
+- `targetType` : one of the following constants:
+  - `pinkball`
+
+- `kickMotion` : one of the following constants:
+  - `kick`
+  - `heading`
+
+This method is equivalent to `askAction("kick_object", Dict(TargetType=>targetType, KickMotion=>kickMotion, Enqueue=>enqueue))`
+"""
+function askKickObject(
+   targetType="pinkball",
+   kickMotion="kick",
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "TargetType"=> targetType,
+      "KickMotion"=> kickMotion)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("kick_object", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askReleaseObject(
+      targetType="aibone",
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `release_object`.
+
+- `targetType` : one of the following constants:
+  - `aibone`
+  - `dice`
+
+This method is equivalent to `askAction("release_object", Dict(TargetType=>targetType, Enqueue=>enqueue))`
+"""
+function askReleaseObject(
+   targetType="aibone",
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict("TargetType"=> targetType)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("release_object", arguments, 
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end

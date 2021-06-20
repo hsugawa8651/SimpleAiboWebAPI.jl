@@ -172,6 +172,36 @@ askMoveForward
 askMoveSideways
 ```
 
+### Object related APIs
+
+```@docs
+askFindObject
+```
+
+```@docs
+askFoundObjectsStatus
+```
+
+```@docs
+askChaseObject
+```
+
+```@docs
+askApproachObject
+```
+
+```@docs
+askGetCloseToObject
+```
+
+```@docs
+askKickObject
+```
+
+```@docs
+askReleaseObject
+```
+
 ## Alphabetical Index
 
 ```@index
