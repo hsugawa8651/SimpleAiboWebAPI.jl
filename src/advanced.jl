@@ -9,7 +9,8 @@ export
    askBitingStatus, askPlayBone, askPlayDice, askPlayMotion,
    askNameCalledStatus, askVoiceCommandStatus,
    askApproachPerson, askChasePerson, askFindPerson,
-   askExplore, askMoveToPosition
+   askExplore, askMoveToPosition,
+   askTurnAround
 
 ## Status related APIs
 
@@ -607,5 +608,37 @@ function askMoveToPosition(
       arguments["Enqueue"]=enqueue
    end
    askAction("move_to_position", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askTurnAround(
+      turnSpeed=1,
+      turnAngle=0,
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `turn_around`.
+
+- `turnSpeed` : one of 0 (slow), 1, 2 (fast)
+- `turnAngle` : -180 -- 180, counterclockwise with respect to the current aibo angle.
+
+This method is equivalent to `askAction("turn_around", Dict(TargetType=>targetType, Enqueue=>enqueue))`
+
+"""
+function askTurnAround(
+   turnSpeed=1,
+   turnAngle=0,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict("TurnSpeed"=> turnSpeed, "TurnAngle"=> turnAngle)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("turn_around", arguments, 
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end

@@ -150,6 +150,12 @@ askExplore
 askMoveToPosition
 ```
 
+### Moving related APIs
+
+```@docs
+askTurnAround
+```
+
 
 ## Alphabetical Index
 
