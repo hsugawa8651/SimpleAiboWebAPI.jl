@@ -11,7 +11,8 @@ export
    askApproachPerson, askChasePerson, askFindPerson,
    askExplore, askMoveToPosition,
    askTurnAround, askMoveAlongCircle, askMoveDirection,
-   askMoveForward, askMoveSideways
+   askMoveForward, askMoveSideways,
+   askFoundObjectsStatus
 
 ## Status related APIs
 
@@ -554,6 +555,8 @@ function askFindPerson(;
 end
 
 
+### Position related APIs
+
 """
     askExplore(
       duration=60,
@@ -613,6 +616,8 @@ function askMoveToPosition(
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
 
+
+### Moving related APIs
 
 """
     askTurnAround(
@@ -789,5 +794,27 @@ function askMoveSideways(
       arguments["Enqueue"]=enqueue
    end
    askAction("move_sideways", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+### Object related APIs
+
+
+"""
+    askFoundObjectsStatus(;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `found_objects_status`.
+
+This method is equivalent to `askAction("found_objects_status")`
+"""
+function askFoundObjectsStatus(;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+   timeoutLimit=10)
+   askAction("found_objects_status",
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end

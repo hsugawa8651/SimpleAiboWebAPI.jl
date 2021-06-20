@@ -172,6 +172,13 @@ askMoveForward
 askMoveSideways
 ```
 
+### Object related APIs
+
+```@docs
+askFoundObjectsStatus
+```
+
+
 ## Alphabetical Index
 
 ```@index
