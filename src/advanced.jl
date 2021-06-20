@@ -9,7 +9,9 @@ export
    askBitingStatus, askPlayBone, askPlayDice, askPlayMotion,
    askNameCalledStatus, askVoiceCommandStatus,
    askApproachPerson, askChasePerson, askFindPerson,
-   askExplore, askMoveToPosition
+   askExplore, askMoveToPosition,
+   askTurnAround, askMoveAlongCircle, askMoveDirection,
+   askMoveForward, askMoveSideways
 
 ## Status related APIs
 
@@ -420,7 +422,9 @@ function askPlayMotion(
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
-   arguments = Dict("Category"=> category, "Mode"=>mode)
+   arguments = Dict(
+      "Category"=> category, 
+      "Mode"=>mode)
    if enqueue
       arguments["Enqueue"]=enqueue
    end
@@ -594,7 +598,6 @@ asks `move_to_position`.
   - `toilet`
 
 This method is equivalent to `askAction("move_to_position", Dict(TargetType=>targetType, Enqueue=>enqueue))`
-
 """
 function askMoveToPosition(
    targetType,
@@ -607,5 +610,184 @@ function askMoveToPosition(
       arguments["Enqueue"]=enqueue
    end
    askAction("move_to_position", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askTurnAround(
+      turnSpeed=1,
+      turnAngle=0,
+      enqueue=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `turn_around`.
+
+- `turnSpeed` : one of 0 (slow), 1, 2 (fast)
+- `turnAngle` : -180 -- 180, counterclockwise with respect to the current aibo angle.
+
+This method is equivalent to `askAction("turn_around", Dict(TurnSpeed=> turnSpeed, TurnAngle=> turnAngle, Enqueue=>enqueue))`
+"""
+function askTurnAround(
+   turnSpeed=1,
+   turnAngle=0,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "TurnSpeed"=> turnSpeed, 
+      "TurnAngle"=> turnAngle)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("turn_around", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askMoveAlongCircle(
+      walkSpeed=1,
+      radius=1,
+      movingAngle=360,
+      enqueue=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `move_along_circle`.
+
+- `walkSpeed`   : one of 0 (slow), 1, 2 (fast)
+- `radius`      : 0.5 -- 3 (meter)
+- `movingAngle` : 0 -- 1080 (degree)
+
+This method is equivalent to `askAction("move_along_circle", Dict(WalkSpeed=> walkSpeed, Radius=> radius, MovingAngle=>movingAngle, Enqueue=>enqueue))`
+
+"""
+function askMoveAlongCircle(
+   walkSpeed=1,
+   radius=1,
+   movingAngle=360,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "WalkSpeed"=> walkSpeed, 
+      "Radius"=> radius, 
+      "MovingAngle"=> movingAngle)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("move_along_circle", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askMoveDirection(
+      walkSpeed=1,
+      targetDistance=1,
+      targetAngle=0,
+      enqueue=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `move_direction`.
+
+- `walkSpeed`      : one of 0 (slow), 1, 2 (fast)
+- `targetDistance` : 0 -- 6 (meter)
+- `targetAngle`    : -180 -- 180, counterclockwise with respect to the current aibo angle.
+
+This method is equivalent to `askAction("move_direction", Dict(WalkSpeed=> walkSpeed, TargetDistance=> targetDistance, TargetAngle=> targetAngle, Enqueue=>enqueue))`
+"""
+function askMoveDirection(
+   walkSpeed=1,
+   targetDistance=1,
+   targetAngle=0,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "WalkSpeed"=> walkSpeed, 
+      "TargetDistance"=> targetDistance,
+      "TargetAngle"=> targetAngle)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("move_direction", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askMoveForward(
+      walkSpeed=1,
+      walkDistance=1,
+      enqueue=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `move_forward`.
+
+- `walkSpeed`    : one of 0 (slow), 1, 2 (fast)
+- `walkDistance` : -6 -- 6 (meter)
+
+This method is equivalent to `askAction("move_forward", Dict(WalkSpeed=> walkSpeed, WalkDistance=> walkDistance, Enqueue=>enqueue))`
+"""
+function askMoveForward(
+   walkSpeed=1,
+   walkDistance=1,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "WalkSpeed"=> walkSpeed,
+      "WalkDistance"=> walkDistance)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("move_forward", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askMoveSideways(
+      walkSpeed=1,
+      walkDistance=0.5,
+      enqueue=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `move_sideways`.
+
+- `walkSpeed`    : one of 0 (slow), 1, 2 (fast)
+- `walkDistance` : -6 -- 6 (meter)
+
+This method is equivalent to `askAction("move_sideways", Dict(WalkSpeed=> walkSpeed, WalkDistance=> walkDistance, Enqueue=>enqueue))`
+"""
+function askMoveSideways(
+   walkSpeed=1,
+   walkDistance=0.5,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "WalkSpeed"=> walkSpeed,
+      "WalkDistance"=> walkDistance)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("move_sideways", arguments, 
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end

@@ -150,6 +150,27 @@ askExplore
 askMoveToPosition
 ```
 
+### Moving related APIs
+
+```@docs
+askTurnAround
+```
+
+```@docs
+askMoveAlongCircle
+```
+
+```@docs
+askMoveDirection
+```
+
+```@docs
+askMoveForward
+```
+
+```@docs
+askMoveSideways
+```
 
 ## Alphabetical Index
 
