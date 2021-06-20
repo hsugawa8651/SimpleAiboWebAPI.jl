@@ -198,6 +198,10 @@ askGetCloseToObject
 askKickObject
 ```
 
+```@docs
+askReleaseObject
+```
+
 ## Alphabetical Index
 
 ```@index

@@ -14,7 +14,7 @@ export
    askMoveForward, askMoveSideways,
    askFoundObjectsStatus, askApproachObject, askChaseObject, 
    askFindObject, askGetCloseToObject,
-   askKickObject
+   askKickObject, askReleaseObject
 
 ## Status related APIs
 
@@ -995,5 +995,35 @@ function askKickObject(
       arguments["Enqueue"]=enqueue
    end
    askAction("kick_object", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askReleaseObject(
+      targetType="aibone",
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `release_object`.
+
+- `targetType` : one of the following constants:
+  - `aibone`
+  - `dice`
+
+This method is equivalent to `askAction("release_object", Dict(TargetType=>targetType, Enqueue=>enqueue))`
+"""
+function askReleaseObject(
+   targetType="aibone",
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict("TargetType"=> targetType)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("release_object", arguments, 
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
