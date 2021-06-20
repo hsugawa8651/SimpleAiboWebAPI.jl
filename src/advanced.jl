@@ -10,7 +10,8 @@ export
    askNameCalledStatus, askVoiceCommandStatus,
    askApproachPerson, askChasePerson, askFindPerson,
    askExplore, askMoveToPosition,
-   askTurnAround, askMoveAlongCircle, askMoveDirection
+   askTurnAround, askMoveAlongCircle, askMoveDirection,
+   askMoveForward
 
 ## Status related APIs
 
@@ -421,7 +422,9 @@ function askPlayMotion(
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
-   arguments = Dict("Category"=> category, "Mode"=>mode)
+   arguments = Dict(
+      "Category"=> category, 
+      "Mode"=>mode)
    if enqueue
       arguments["Enqueue"]=enqueue
    end
@@ -634,7 +637,9 @@ function askTurnAround(
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
-   arguments = Dict("TurnSpeed"=> turnSpeed, "TurnAngle"=> turnAngle)
+   arguments = Dict(
+      "TurnSpeed"=> turnSpeed, 
+      "TurnAngle"=> turnAngle)
    if enqueue
       arguments["Enqueue"]=enqueue
    end
@@ -670,7 +675,10 @@ function askMoveAlongCircle(
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
-   arguments = Dict("WalkSpeed"=> walkSpeed, "Radius"=> radius, "MovingAngle"=> movingAngle)
+   arguments = Dict(
+      "WalkSpeed"=> walkSpeed, 
+      "Radius"=> radius, 
+      "MovingAngle"=> movingAngle)
    if enqueue
       arguments["Enqueue"]=enqueue
    end
@@ -705,10 +713,47 @@ function askMoveDirection(
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
-   arguments = Dict("WalkSpeed"=> walkSpeed, "TargetDistance"=> targetDistance, "TargetAngle"=> targetAngle)
+   arguments = Dict(
+      "WalkSpeed"=> walkSpeed, 
+      "TargetDistance"=> targetDistance,
+      "TargetAngle"=> targetAngle)
    if enqueue
       arguments["Enqueue"]=enqueue
    end
    askAction("move_direction", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askMoveForward(
+      walkSpeed=1,
+      walkDistance=1,
+      enqueue=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `move_forward`.
+
+- `walkSpeed`    : one of 0 (slow), 1, 2 (fast)
+- `walkDistance` : -6 -- 6 (meter)
+
+This method is equivalent to `askAction("move_forward", Dict(WalkSpeed=> walkSpeed, WalkDistance=> walkDistance, Enqueue=>enqueue))`
+"""
+function askMoveForward(
+   walkSpeed=1,
+   walkDistance=1,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "WalkSpeed"=> walkSpeed,
+      "WalkDistance"=> walkDistance)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("move_forward", arguments, 
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end

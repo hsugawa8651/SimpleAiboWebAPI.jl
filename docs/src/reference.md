@@ -164,6 +164,9 @@ askMoveAlongCircle
 askMoveDirection
 ```
 
+```@docs
+askMoveForward
+```
 
 ## Alphabetical Index
 
