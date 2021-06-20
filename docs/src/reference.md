@@ -175,11 +175,11 @@ askMoveSideways
 ### Object related APIs
 
 ```@docs
-askFoundObjectsStatus
+askFindObject
 ```
 
 ```@docs
-askApproachObject
+askFoundObjectsStatus
 ```
 
 ```@docs
@@ -187,7 +187,11 @@ askChaseObject
 ```
 
 ```@docs
-askFindObject
+askApproachObject
+```
+
+```@docs
+askGetCloseToObject
 ```
 
 ## Alphabetical Index
