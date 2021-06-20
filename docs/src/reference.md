@@ -97,7 +97,6 @@ askMoveHead
 askStay
 ```
 
-
 ### Play related APIs
 
 ```@docs
@@ -137,9 +136,18 @@ askApproachPerson
 askChasePerson
 ```
 
-
 ```@docs
 askFindPerson
+```
+
+### Position related APIs
+
+```@docs
+askExplore
+```
+
+```@docs
+askMoveToPosition
 ```
 
 
