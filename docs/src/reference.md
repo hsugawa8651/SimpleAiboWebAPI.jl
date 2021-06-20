@@ -178,6 +178,9 @@ askMoveSideways
 askFoundObjectsStatus
 ```
 
+```@docs
+askApproachObject
+```
 
 ## Alphabetical Index
 

@@ -12,7 +12,7 @@ export
    askExplore, askMoveToPosition,
    askTurnAround, askMoveAlongCircle, askMoveDirection,
    askMoveForward, askMoveSideways,
-   askFoundObjectsStatus
+   askFoundObjectsStatus, askApproachObject
 
 ## Status related APIs
 
@@ -816,5 +816,37 @@ function askFoundObjectsStatus(;
    target_nickname=nothing,
    timeoutLimit=10)
    askAction("found_objects_status",
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askApproachObject(
+      targetType,
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `approach_object`.
+
+- `targetType` : one of the following constants:
+  - `aibo`
+  - `aibone`
+  - `dice`
+  - `pinkball`
+
+This method is equivalent to `askAction("approach_object", Dict(TargetType=>targetType, Enqueue=>enqueue))`
+"""
+function askApproachObject(
+   targetType,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict("TargetType"=> targetType)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("approach_object", arguments, 
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
