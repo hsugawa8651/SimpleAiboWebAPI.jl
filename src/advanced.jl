@@ -13,7 +13,8 @@ export
    askTurnAround, askMoveAlongCircle, askMoveDirection,
    askMoveForward, askMoveSideways,
    askFoundObjectsStatus, askApproachObject, askChaseObject, 
-   askFindObject, askGetCloseToObject
+   askFindObject, askGetCloseToObject,
+   askKickObject
 
 ## Status related APIs
 
@@ -589,7 +590,7 @@ end
 
 """
     askMoveToPosition(
-      targetType,
+      targetType="charging_station",
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -604,7 +605,7 @@ asks `move_to_position`.
 This method is equivalent to `askAction("move_to_position", Dict(TargetType=>targetType, Enqueue=>enqueue))`
 """
 function askMoveToPosition(
-   targetType,
+   targetType="charging_station",
    enqueue=false;
    target_deviceID=nothing,
    target_nickname=nothing,
@@ -823,7 +824,7 @@ end
 
 """
     askApproachObject(
-      targetType,
+      targetType="pinkball",
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -839,7 +840,7 @@ asks `approach_object`.
 This method is equivalent to `askAction("approach_object", Dict(TargetType=>targetType, Enqueue=>enqueue))`
 """
 function askApproachObject(
-   targetType,
+   targetType="pinkball",
    enqueue=false;
    target_deviceID=nothing,
    target_nickname=nothing,
@@ -855,7 +856,7 @@ end
 
 """
     askChaseObject(
-      targetType,
+      targetType="pinkball",
       chasingDurationMsec=30*1000,
       target_deviceID=nothing,
       target_nickname=nothing,
@@ -873,7 +874,7 @@ asks `chase_object`.
 This method is equivalent to `askAction("chase_object", Dict(TargetType=>targetType, ChasingDurationMsec=> chasingDurationMsec, Enqueue=>enqueue))`
 """
 function askChaseObject(
-   targetType,
+   targetType="pinkball",
    chasingDurationMsec=30*1000,
    enqueue=false;
    target_deviceID=nothing,
@@ -892,7 +893,7 @@ end
 
 """
     askFindObject(
-      targetType,
+      targetType="pinkball",
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -908,7 +909,7 @@ asks `find_object`.
 This method is equivalent to `askAction("find_object", Dict(TargetType=>targetType, Enqueue=>enqueue))`
 """
 function askFindObject(
-   targetType,
+   targetType="pinkball",
    enqueue=false;
    target_deviceID=nothing,
    target_nickname=nothing,
@@ -924,7 +925,7 @@ end
 
 """
     askGetCloseToObject(
-      targetType,
+      targetType="pinkball",
       distance=0.2,
       target_deviceID=nothing,
       target_nickname=nothing,
@@ -944,7 +945,7 @@ Invoke this method after `askApproachObject`.
 This method is equivalent to `askAction("get_close_to_object", Dict(TargetType=>targetType, Distance=>distance, Enqueue=>enqueue))`
 """
 function askGetCloseToObject(
-   targetType,
+   targetType="pinkball",
    distance=0.2,
    enqueue=false;
    target_deviceID=nothing,
@@ -952,10 +953,47 @@ function askGetCloseToObject(
 	timeoutLimit=10)
    arguments = Dict(
       "TargetType"=> targetType,
-      "Distance"=>distance)
+      "Distance"=> distance)
    if enqueue
       arguments["Enqueue"]=enqueue
    end
    askAction("get_close_to_object", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askKickObject(
+      targetType="pinkball",
+      kickMotion="kick",
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `kick_object`.
+
+- `targetType` : one of the following constants:
+  - `pinkball`
+
+- `kickMotion` : one of the following constants:
+  - `kick`
+  - `heading`
+
+This method is equivalent to `askAction("kick_object", Dict(TargetType=>targetType, KickMotion=>kickMotion, Enqueue=>enqueue))`
+"""
+function askKickObject(
+   targetType="pinkball",
+   kickMotion="kick",
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict(
+      "TargetType"=> targetType,
+      "KickMotion"=> kickMotion)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("kick_object", arguments, 
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
