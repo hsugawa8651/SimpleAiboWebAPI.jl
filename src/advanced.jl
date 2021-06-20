@@ -1,6 +1,16 @@
 
 # Advanced APIs
 
+export 
+   askHungryStatus, askSleepyStatus,
+   askPawPadsStatus,
+   askBodyTouchedStatus,
+   askPostureStatus, askChangePosture, askMoveHead, askStay,
+   askBitingStatus, askPlayBone, askPlayDice, askPlayMotion,
+   askNameCalledStatus, askVoiceCommandStatus,
+   askApproachPerson, askChasePerson, askFindPerson,
+   askExplore, askMoveToPosition
+
 ## Status related APIs
 
 """
@@ -539,3 +549,63 @@ function askFindPerson(;
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end
 
+
+"""
+    askExplore(
+      duration=60,
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `explore`.
+
+- `duration` : 0 -- 360 (seconds)
+
+This method is equivalent to `askAction("explore", Dict(Duration=>duration, Enqueue=>enqueue))`
+
+"""
+function askExplore(
+   duration=60,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict("Duration"=> duration)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("explore", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askMoveToPosition(
+      targetType,
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `move_to_position`.
+
+- `targetType` : one of the following constants:
+  - `charging_station`
+  - `greeting_spot`
+  - `toilet`
+
+This method is equivalent to `askAction("move_to_position", Dict(TargetType=>targetType, Enqueue=>enqueue))`
+
+"""
+function askMoveToPosition(
+   targetType,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict("TargetType"=> targetType)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("move_to_position", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
