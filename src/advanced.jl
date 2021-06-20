@@ -10,7 +10,7 @@ export
    askNameCalledStatus, askVoiceCommandStatus,
    askApproachPerson, askChasePerson, askFindPerson,
    askExplore, askMoveToPosition,
-   askTurnAround
+   askTurnAround, askMoveAlongCircle
 
 ## Status related APIs
 
@@ -616,6 +616,7 @@ end
     askTurnAround(
       turnSpeed=1,
       turnAngle=0,
+      enqueue=false;
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -625,7 +626,7 @@ asks `turn_around`.
 - `turnSpeed` : one of 0 (slow), 1, 2 (fast)
 - `turnAngle` : -180 -- 180, counterclockwise with respect to the current aibo angle.
 
-This method is equivalent to `askAction("turn_around", Dict(TargetType=>targetType, Enqueue=>enqueue))`
+This method is equivalent to `askAction("turn_around", Dict(TurnSpeed=> turnSpeed, TurnAngle=> turnAngle, Enqueue=>enqueue))`
 
 """
 function askTurnAround(
@@ -640,5 +641,41 @@ function askTurnAround(
       arguments["Enqueue"]=enqueue
    end
    askAction("turn_around", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
+
+"""
+    askMoveAlongCircle(
+      walkSpeed=1,
+      radius=1,
+      movingAngle=360,
+      enqueue=false;
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `move_along_circle`.
+
+- `walkSpeed`   : one of 0 (slow), 1, 2 (fast)
+- `radius`      : 0.5 -- 3 (meter)
+- `movingAngle` : 0 -- 1080 (degree)
+
+This method is equivalent to `askAction("move_along_circle", Dict(WalkSpeed=> walkSpeed, Radius=> radius, MovingAngle=>movingAngle, Enqueue=>enqueue))`
+
+"""
+function askMoveAlongCircle(
+   walkSpeed=1,
+   radius=1,
+   movingAngle=360,
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+	timeoutLimit=10)
+   arguments = Dict("WalkSpeed"=> walkSpeed, "Radius"=> radius, "MovingAngle"=> movingAngle)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("move_along_circle", arguments, 
       target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
 end

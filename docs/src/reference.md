@@ -156,6 +156,10 @@ askMoveToPosition
 askTurnAround
 ```
 
+```@docs
+askMoveAlongCircle
+```
+
 
 ## Alphabetical Index
 
