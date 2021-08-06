@@ -317,7 +317,7 @@ end
     askPlayMotion(
       category="agree",
       enquee=false;
-      Mode="NONE",
+      mode="NONE",
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -421,7 +421,7 @@ This method is equivalent to `askAction("play_motion", Dict(Category=>category, 
 function askPlayMotion(
    category="agree",
    enqueue=false;
-   Mode="NONE",
+   mode="NONE",
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
