@@ -19,7 +19,7 @@ export
 ## Status related APIs
 
 """
-   askSetMode(
+    askSetMode(
       enquee=false;
       modeName="NORMAL",
       target_deviceID=nothing,

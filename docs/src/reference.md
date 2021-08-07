@@ -64,6 +64,10 @@ getExecution
 ### Status related APIs
 
 ```@docs
+askSetMode
+```
+
+```@docs
 askHungryStatus
 ```
 
