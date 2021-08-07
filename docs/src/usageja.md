@@ -15,9 +15,16 @@ getDevices(yourAccessToken)  # アクセストークンを登録し、デバイ�
 askAction("hungry_status")
 askHungryStatus()  # advanced API
 
+# 指示待ちモードにします
+askSetMode("DEVELOPMENT")  # advanced API
+
 # API引数は Dict()で指定します
 askAction("change_posture", Dict("FinalPosture" => "sit"))
 askChangePosture("sit")  # advanced API
+
+# 指示待ちモードから抜けます
+askSetMode("NORMAL")  # advanced API
+askSetMode()  # advanced API
 
 # aiboの名前で、通信先デバイスを指定できます
 askAction("hungry_status", target_nickname="aibo_nickname")

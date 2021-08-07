@@ -15,9 +15,16 @@ getDevices(yourAccessToken)  # Register your access token, and receive device li
 askAction("hungry_status")
 askHungryStatus()  # advanced API
 
+# Change to DEVELOPMENT mode
+askSetMode("DEVELOPMENT")  # advanced API
+
 # Supply API arguments by Dict()
 askAction("change_posture", Dict("FinalPosture" => "sit"))
 askChangePosture("sit")  # advanced API
+
+# Change to NORMAL mode
+askSetMode("NORMAL")  # advanced API
+askSetMode()  # advanced API
 
 # Specify the target device by his/her nickname
 askAction("hungry_status", target_nickname="aibo_nickname")
