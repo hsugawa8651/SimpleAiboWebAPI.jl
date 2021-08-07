@@ -2,7 +2,7 @@
 # Advanced APIs
 
 export 
-   askHungryStatus, askSleepyStatus,
+   askSetMode, askHungryStatus, askSleepyStatus,
    askPawPadsStatus,
    askBodyTouchedStatus,
    askPostureStatus, askChangePosture, askMoveHead, askStay,
@@ -17,6 +17,38 @@ export
    askKickObject, askReleaseObject
 
 ## Status related APIs
+
+"""
+   askSetMode(
+      enquee=false;
+      modeName="NORMAL",
+      target_deviceID=nothing,
+      target_nickname=nothing,
+      timeoutLimit=10)
+
+asks `set_mode`.
+
+- `askSetMode` should be one of the following string:
+  - `NORMAL`
+  - `DEVELOPMENT`
+
+This method is equivalent to `askAction("set_mode", Dict(ModeName=>modeName, Enqueue=>enqueue))`
+
+"""
+function askSetMode(
+   modeName="NORMAL",
+   enqueue=false;
+   target_deviceID=nothing,
+   target_nickname=nothing,
+   timeoutLimit=10)
+   arguments = Dict("ModeName"=> modeName)
+   if enqueue
+      arguments["Enqueue"]=enqueue
+   end
+   askAction("set_mode", arguments, 
+      target_deviceID=target_deviceID, target_nickname=target_deviceID, timeoutLimit=timeoutLimit)
+end
+
 
 """
     askHungryStatus(;
