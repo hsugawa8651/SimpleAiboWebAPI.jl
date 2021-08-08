@@ -319,7 +319,7 @@ end
 
 asks `change_posture`.
 
-- `category` should be one of the following string:
+- `category` should be one of the following constants:
   - `holdMouthDice`
   - `rollDiceLeft`
   - `rollDiceRight`
