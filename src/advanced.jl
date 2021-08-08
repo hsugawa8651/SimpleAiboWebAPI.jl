@@ -356,7 +356,7 @@ end
 
 asks `play_motion`.
 
-- `category` should be one of the following string. Optional `Mode` parameters other than "NONE" is also listed.
+- `category` should be one of the following constants. Optional `Mode` parameters other than "NONE" are also listed.
   - `agree`
   - `bad`
   - `bark`
