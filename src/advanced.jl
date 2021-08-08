@@ -929,6 +929,7 @@ end
 """
     askFindObject(
       targetType="pinkball",
+      enqueue=false;
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
