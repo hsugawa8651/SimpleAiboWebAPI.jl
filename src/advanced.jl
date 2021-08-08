@@ -858,8 +858,8 @@ end
 
 """
     askApproachObject(
-      targetType="pinkball",
-      enqueue=false;
+      targetType="pinkball";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -875,8 +875,8 @@ asks `approach_object`.
 This method is equivalent to `askAction("approach_object", Dict(TargetType=>targetType, Enqueue=>enqueue))`
 """
 function askApproachObject(
-   targetType="pinkball",
-   enqueue=false;
+   targetType="pinkball";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
