@@ -20,9 +20,9 @@ export
 
 """
     askSetMode(
-      enquee=false;
       modeName="NORMAL",
-      target_deviceID=nothing,
+      enqueue=false;
+         target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
 
