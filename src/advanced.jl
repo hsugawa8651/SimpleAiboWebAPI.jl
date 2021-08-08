@@ -28,7 +28,7 @@ export
 
 asks `set_mode`.
 
-- `askSetMode` should be one of the following string:
+- `askSetMode` should be one of the following strings:
   - `NORMAL`
   - `DEVELOPMENT`
 
