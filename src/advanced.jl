@@ -801,8 +801,8 @@ end
 
 """
     askMoveSideways(
-      walkSpeed=1,
       walkDistance=0.5,
+      walkSpeed=1,
       enqueue=false;
       target_deviceID=nothing,
       target_nickname=nothing,
@@ -816,8 +816,8 @@ asks `move_sideways`.
 This method is equivalent to `askAction("move_sideways", Dict(WalkSpeed=> walkSpeed, WalkDistance=> walkDistance, Enqueue=>enqueue))`
 """
 function askMoveSideways(
-   walkSpeed=1,
    walkDistance=0.5,
+   walkSpeed=1,
    enqueue=false;
    target_deviceID=nothing,
    target_nickname=nothing,
