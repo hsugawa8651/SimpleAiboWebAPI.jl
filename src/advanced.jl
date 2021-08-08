@@ -623,8 +623,8 @@ end
 
 """
     askMoveToPosition(
-      targetType="charging_station",
-      enqueue=false;
+      targetType="charging_station";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -639,8 +639,8 @@ asks `move_to_position`.
 This method is equivalent to `askAction("move_to_position", Dict(TargetType=>targetType, Enqueue=>enqueue))`
 """
 function askMoveToPosition(
-   targetType="charging_station",
-   enqueue=false;
+   targetType="charging_station";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
