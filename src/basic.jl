@@ -5,7 +5,7 @@ export
    getDevices, getAccessToken, getCurrentDevices,
    getDefaultDevice, getDefaultDeviceId, getDefaultDeviceNickname,
    setDefaultDevice, findDevice,
-   askActionSimple, askAction, getExecution
+   askActionSimple, askAction, getExecution, isStatusSucceeded
 
 
 using JSON
@@ -265,3 +265,14 @@ function getExecution(executionId, timeoutLimit=10)
    return Dict()
 end
 
+
+"""
+    isStatusSucceeded(result)
+
+returns whether the status of the request `result` is "SUCCEEDED" or not.
+"""
+function isStatusSucceeded(result)
+   isa(result, Dict) || return false
+   haskey(result, "status") || return false
+   result["status"] == "SUCCEEDED"
+end

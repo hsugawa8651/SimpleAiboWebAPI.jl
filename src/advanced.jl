@@ -20,15 +20,15 @@ export
 
 """
     askSetMode(
-      enquee=false;
-      modeName="NORMAL",
+      modeName="NORMAL";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
 
 asks `set_mode`.
 
-- `askSetMode` should be one of the following string:
+- `askSetMode` should be one of the following strings:
   - `NORMAL`
   - `DEVELOPMENT`
 
@@ -36,8 +36,8 @@ This method is equivalent to `askAction("set_mode", Dict(ModeName=>modeName, Enq
 
 """
 function askSetMode(
-   modeName="NORMAL",
-   enqueue=false;
+   modeName="NORMAL";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
@@ -151,15 +151,15 @@ end
 
 """
     askChangePosture(
-      finalPosture,
-      enquee=false;
+      finalPosture="sit";
+      enquee=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
 
 asks `change_posture`.
 
-- `finalPosture` should be one of the following string:
+- `finalPosture` should be one of the following constants:
   - `back`
   - `crouch`
   - `down`
@@ -175,8 +175,8 @@ This method is equivalent to `askAction("change_posture", Dict(FinalPosture=>fin
 
 """
 function askChangePosture(
-   finalPosture="sit",
-   enqueue=false;
+   finalPosture="sit";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -190,11 +190,11 @@ end
 
 
 """
-    askMoveHead(
-      azimuth,
-      elevation,
-      velocity,
-      enquee=false;
+    askMoveHead(;
+      azimuth=0,
+      elevation=0,
+      velocity=0,
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -208,11 +208,11 @@ asks `move_head`.
 This method is equivalent to `askAction("move_head", Dict(Duration=>duration, Enqueue=>enqueue))`
 
 """
-function askMoveHead(
-   azimuth,
-   elevation,
-   velocity,
-   enqueue=false;
+function askMoveHead(;
+   azimuth=0,
+   elevation=0,
+   velocity=0,
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -229,9 +229,9 @@ end
 
 
 """
-    askStay(
-      duration,
-      enquee=false;
+    askStay(;
+      duration=60,
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -243,9 +243,9 @@ asks `stay` for `duration` seconds.
 This method is equivalent to `askAction("stay", Dict(Duration=>duration, Enqueue=>enqueue))`
 
 """
-function askStay(
+function askStay(;
    duration=60,
-   enqueue=false;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -282,8 +282,8 @@ end
 
 """
     askPlayBone(
-      enquee=false;
-      category="holdMouth",
+      category="holdMouth";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -295,8 +295,8 @@ This method is equivalent to `askAction("play_bone", Dict(Category=>holdMouth, E
 
 """
 function askPlayBone(
-   enqueue=false;
-   category="holdMouth",
+   category="holdMouth";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
@@ -311,15 +311,15 @@ end
 
 """
     askPlayDice(
-      category="holdMouthDice",
-      enquee=false;
+      category="holdMouthDice";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
 
 asks `change_posture`.
 
-- `category` should be one of the following string:
+- `category` should be one of the following constants:
   - `holdMouthDice`
   - `rollDiceLeft`
   - `rollDiceRight`
@@ -331,8 +331,8 @@ This method is equivalent to `askAction("play_dice", Dict(Category=>category, En
 
 """
 function askPlayDice(
-   category="holdMouthDice",
-   enqueue=false;
+   category="holdMouthDice";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
@@ -347,8 +347,8 @@ end
 
 """
     askPlayMotion(
-      category="agree",
-      enquee=false;
+      category="agree";
+      enqueue=false,
       mode="NONE",
       target_deviceID=nothing,
       target_nickname=nothing,
@@ -356,7 +356,7 @@ end
 
 asks `play_motion`.
 
-- `category` should be one of the following string. Optional `Mode` parameters other than "NONE" is also listed.
+- `category` should be one of the following constants. Optional `Mode` parameters other than "NONE" are also listed.
   - `agree`
   - `bad`
   - `bark`
@@ -451,8 +451,8 @@ This method is equivalent to `askAction("play_motion", Dict(Category=>category, 
 
 """
 function askPlayMotion(
-   category="agree",
-   enqueue=false;
+   category="agree";
+   enqueue=false,
    mode="NONE",
    target_deviceID=nothing,
    target_nickname=nothing,
@@ -512,8 +512,8 @@ end
 
 """
     askApproachPerson(
-      distanceFromTarget=1,
-      enquee=false;
+      distanceFromTarget=1;
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -526,8 +526,8 @@ This method is equivalent to `askAction("approach_person", Dict(DistanceFromTarg
 
 """
 function askApproachPerson(
-   distanceFromTarget=1,
-   enqueue=false;
+   distanceFromTarget=1;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
@@ -542,8 +542,8 @@ end
 
 """
     askChasePerson(
-      chasingDurationMsec=15*1000,
-      enquee=false;
+      chasingDurationMsec=15*1000;
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -556,8 +556,8 @@ This method is equivalent to `askAction("chase_person", Dict(ChasingDurationMsec
 
 """
 function askChasePerson(
-   chasingDurationMsec=15*1000,
-   enqueue=false;
+   chasingDurationMsec=15*1000;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
@@ -593,7 +593,8 @@ end
 
 """
     askExplore(
-      duration=60,
+      duration=60;
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -606,8 +607,8 @@ This method is equivalent to `askAction("explore", Dict(Duration=>duration, Enqu
 
 """
 function askExplore(
-   duration=60,
-   enqueue=false;
+   duration=60;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -622,7 +623,8 @@ end
 
 """
     askMoveToPosition(
-      targetType="charging_station",
+      targetType="charging_station";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -637,8 +639,8 @@ asks `move_to_position`.
 This method is equivalent to `askAction("move_to_position", Dict(TargetType=>targetType, Enqueue=>enqueue))`
 """
 function askMoveToPosition(
-   targetType="charging_station",
-   enqueue=false;
+   targetType="charging_station";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -654,10 +656,10 @@ end
 ### Moving related APIs
 
 """
-    askTurnAround(
-      turnSpeed=1,
+    askTurnAround(;
       turnAngle=0,
-      enqueue=false;
+      turnSpeed=1,
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -669,10 +671,10 @@ asks `turn_around`.
 
 This method is equivalent to `askAction("turn_around", Dict(TurnSpeed=> turnSpeed, TurnAngle=> turnAngle, Enqueue=>enqueue))`
 """
-function askTurnAround(
-   turnSpeed=1,
+function askTurnAround(;
    turnAngle=0,
-   enqueue=false;
+   turnSpeed=1,
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -688,11 +690,11 @@ end
 
 
 """
-    askMoveAlongCircle(
-      walkSpeed=1,
-      radius=1,
+    askMoveAlongCircle(;
       movingAngle=360,
-      enqueue=false;
+      radius=1,
+      walkSpeed=1,
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -706,11 +708,11 @@ asks `move_along_circle`.
 This method is equivalent to `askAction("move_along_circle", Dict(WalkSpeed=> walkSpeed, Radius=> radius, MovingAngle=>movingAngle, Enqueue=>enqueue))`
 
 """
-function askMoveAlongCircle(
-   walkSpeed=1,
-   radius=1,
+function askMoveAlongCircle(;
    movingAngle=360,
-   enqueue=false;
+   radius=1,
+   walkSpeed=1,
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -727,11 +729,11 @@ end
 
 
 """
-    askMoveDirection(
-      walkSpeed=1,
-      targetDistance=1,
+    askMoveDirection(;
       targetAngle=0,
-      enqueue=false;
+      targetDistance=1,
+      walkSpeed=1,
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -744,11 +746,11 @@ asks `move_direction`.
 
 This method is equivalent to `askAction("move_direction", Dict(WalkSpeed=> walkSpeed, TargetDistance=> targetDistance, TargetAngle=> targetAngle, Enqueue=>enqueue))`
 """
-function askMoveDirection(
-   walkSpeed=1,
-   targetDistance=1,
+function askMoveDirection(;
    targetAngle=0,
-   enqueue=false;
+   targetDistance=1,
+   walkSpeed=1,
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -765,10 +767,10 @@ end
 
 
 """
-    askMoveForward(
-      walkSpeed=1,
+    askMoveForward(;
       walkDistance=1,
-      enqueue=false;
+      walkSpeed=1,
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -780,10 +782,10 @@ asks `move_forward`.
 
 This method is equivalent to `askAction("move_forward", Dict(WalkSpeed=> walkSpeed, WalkDistance=> walkDistance, Enqueue=>enqueue))`
 """
-function askMoveForward(
-   walkSpeed=1,
+function askMoveForward(;
    walkDistance=1,
-   enqueue=false;
+   walkSpeed=1,
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -799,10 +801,10 @@ end
 
 
 """
-    askMoveSideways(
-      walkSpeed=1,
+    askMoveSideways(;
       walkDistance=0.5,
-      enqueue=false;
+      walkSpeed=1,
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -814,10 +816,10 @@ asks `move_sideways`.
 
 This method is equivalent to `askAction("move_sideways", Dict(WalkSpeed=> walkSpeed, WalkDistance=> walkDistance, Enqueue=>enqueue))`
 """
-function askMoveSideways(
-   walkSpeed=1,
+function askMoveSideways(;
    walkDistance=0.5,
-   enqueue=false;
+   walkSpeed=1,
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -856,7 +858,8 @@ end
 
 """
     askApproachObject(
-      targetType="pinkball",
+      targetType="pinkball";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -872,8 +875,8 @@ asks `approach_object`.
 This method is equivalent to `askAction("approach_object", Dict(TargetType=>targetType, Enqueue=>enqueue))`
 """
 function askApproachObject(
-   targetType="pinkball",
-   enqueue=false;
+   targetType="pinkball";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -888,8 +891,9 @@ end
 
 """
     askChaseObject(
-      targetType="pinkball",
+      targetType="pinkball";
       chasingDurationMsec=30*1000,
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -906,9 +910,9 @@ asks `chase_object`.
 This method is equivalent to `askAction("chase_object", Dict(TargetType=>targetType, ChasingDurationMsec=> chasingDurationMsec, Enqueue=>enqueue))`
 """
 function askChaseObject(
-   targetType="pinkball",
+   targetType="pinkball";
    chasingDurationMsec=30*1000,
-   enqueue=false;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -925,7 +929,8 @@ end
 
 """
     askFindObject(
-      targetType="pinkball",
+      targetType="pinkball";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -941,8 +946,8 @@ asks `find_object`.
 This method is equivalent to `askAction("find_object", Dict(TargetType=>targetType, Enqueue=>enqueue))`
 """
 function askFindObject(
-   targetType="pinkball",
-   enqueue=false;
+   targetType="pinkball";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -957,8 +962,9 @@ end
 
 """
     askGetCloseToObject(
-      targetType="pinkball",
+      targetType="pinkball";
       distance=0.2,
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -977,9 +983,9 @@ Invoke this method after `askApproachObject`.
 This method is equivalent to `askAction("get_close_to_object", Dict(TargetType=>targetType, Distance=>distance, Enqueue=>enqueue))`
 """
 function askGetCloseToObject(
-   targetType="pinkball",
+   targetType="pinkball";
    distance=0.2,
-   enqueue=false;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -996,8 +1002,9 @@ end
 
 """
     askKickObject(
-      targetType="pinkball",
+      targetType="pinkball";
       kickMotion="kick",
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -1014,9 +1021,9 @@ asks `kick_object`.
 This method is equivalent to `askAction("kick_object", Dict(TargetType=>targetType, KickMotion=>kickMotion, Enqueue=>enqueue))`
 """
 function askKickObject(
-   targetType="pinkball",
+   targetType="pinkball";
    kickMotion="kick",
-   enqueue=false;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
@@ -1033,7 +1040,8 @@ end
 
 """
     askReleaseObject(
-      targetType="aibone",
+      targetType="aibone";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -1047,8 +1055,8 @@ asks `release_object`.
 This method is equivalent to `askAction("release_object", Dict(TargetType=>targetType, Enqueue=>enqueue))`
 """
 function askReleaseObject(
-   targetType="aibone",
-   enqueue=false;
+   targetType="aibone";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
