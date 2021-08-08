@@ -1003,6 +1003,7 @@ end
     askKickObject(
       targetType="pinkball",
       kickMotion="kick",
+      enqueue=false;
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
