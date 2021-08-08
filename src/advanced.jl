@@ -892,6 +892,7 @@ end
     askChaseObject(
       targetType="pinkball",
       chasingDurationMsec=30*1000,
+      enqueue=false;
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
