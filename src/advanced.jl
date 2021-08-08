@@ -767,10 +767,10 @@ end
 
 
 """
-    askMoveForward(
+    askMoveForward(;
       walkDistance=1,
       walkSpeed=1,
-      enqueue=false;
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -782,10 +782,10 @@ asks `move_forward`.
 
 This method is equivalent to `askAction("move_forward", Dict(WalkSpeed=> walkSpeed, WalkDistance=> walkDistance, Enqueue=>enqueue))`
 """
-function askMoveForward(
+function askMoveForward(;
    walkDistance=1,
    walkSpeed=1,
-   enqueue=false;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
