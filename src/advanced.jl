@@ -962,9 +962,9 @@ end
 
 """
     askGetCloseToObject(
-      targetType="pinkball",
+      targetType="pinkball";
       distance=0.2,
-      enqueue=false;
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -983,9 +983,9 @@ Invoke this method after `askApproachObject`.
 This method is equivalent to `askAction("get_close_to_object", Dict(TargetType=>targetType, Distance=>distance, Enqueue=>enqueue))`
 """
 function askGetCloseToObject(
-   targetType="pinkball",
+   targetType="pinkball";
    distance=0.2,
-   enqueue=false;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
