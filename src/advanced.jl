@@ -767,8 +767,8 @@ end
 
 """
     askMoveForward(
-      walkSpeed=1,
       walkDistance=1,
+      walkSpeed=1,
       enqueue=false;
       target_deviceID=nothing,
       target_nickname=nothing,
@@ -782,8 +782,8 @@ asks `move_forward`.
 This method is equivalent to `askAction("move_forward", Dict(WalkSpeed=> walkSpeed, WalkDistance=> walkDistance, Enqueue=>enqueue))`
 """
 function askMoveForward(
-   walkSpeed=1,
    walkDistance=1,
+   walkSpeed=1,
    enqueue=false;
    target_deviceID=nothing,
    target_nickname=nothing,
