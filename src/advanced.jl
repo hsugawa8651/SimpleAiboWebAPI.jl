@@ -691,9 +691,9 @@ end
 
 """
     askMoveAlongCircle(
-      walkSpeed=1,
-      radius=1,
       movingAngle=360,
+      radius=1,
+      walkSpeed=1,
       enqueue=false;
       target_deviceID=nothing,
       target_nickname=nothing,
@@ -709,9 +709,9 @@ This method is equivalent to `askAction("move_along_circle", Dict(WalkSpeed=> wa
 
 """
 function askMoveAlongCircle(
-   walkSpeed=1,
-   radius=1,
    movingAngle=360,
+   radius=1,
+   walkSpeed=1,
    enqueue=false;
    target_deviceID=nothing,
    target_nickname=nothing,
