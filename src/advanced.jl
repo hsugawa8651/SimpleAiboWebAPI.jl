@@ -656,7 +656,7 @@ end
 ### Moving related APIs
 
 """
-    askTurnAround(
+    askTurnAround(;
       turnAngle=0,
       turnSpeed=1,
       enqueue=false,
@@ -690,11 +690,11 @@ end
 
 
 """
-    askMoveAlongCircle(
+    askMoveAlongCircle(;
       movingAngle=360,
       radius=1,
       walkSpeed=1,
-      enqueue=false;
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -708,11 +708,11 @@ asks `move_along_circle`.
 This method is equivalent to `askAction("move_along_circle", Dict(WalkSpeed=> walkSpeed, Radius=> radius, MovingAngle=>movingAngle, Enqueue=>enqueue))`
 
 """
-function askMoveAlongCircle(
+function askMoveAlongCircle(;
    movingAngle=360,
    radius=1,
    walkSpeed=1,
-   enqueue=false;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
