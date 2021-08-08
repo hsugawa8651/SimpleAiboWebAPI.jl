@@ -1002,9 +1002,9 @@ end
 
 """
     askKickObject(
-      targetType="pinkball",
+      targetType="pinkball";
       kickMotion="kick",
-      enqueue=false;
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -1021,9 +1021,9 @@ asks `kick_object`.
 This method is equivalent to `askAction("kick_object", Dict(TargetType=>targetType, KickMotion=>kickMotion, Enqueue=>enqueue))`
 """
 function askKickObject(
-   targetType="pinkball",
+   targetType="pinkball";
    kickMotion="kick",
-   enqueue=false;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
