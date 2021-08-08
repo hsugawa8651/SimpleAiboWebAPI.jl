@@ -729,9 +729,9 @@ end
 
 """
     askMoveDirection(
-      walkSpeed=1,
-      targetDistance=1,
       targetAngle=0,
+      targetDistance=1,
+      walkSpeed=1,
       enqueue=false;
       target_deviceID=nothing,
       target_nickname=nothing,
@@ -746,9 +746,9 @@ asks `move_direction`.
 This method is equivalent to `askAction("move_direction", Dict(WalkSpeed=> walkSpeed, TargetDistance=> targetDistance, TargetAngle=> targetAngle, Enqueue=>enqueue))`
 """
 function askMoveDirection(
-   walkSpeed=1,
-   targetDistance=1,
    targetAngle=0,
+   targetDistance=1,
+   walkSpeed=1,
    enqueue=false;
    target_deviceID=nothing,
    target_nickname=nothing,
