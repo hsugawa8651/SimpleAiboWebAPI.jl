@@ -191,10 +191,10 @@ end
 
 """
     askMoveHead(
-      azimuth,
-      elevation,
-      velocity,
-      enquee=false;
+      azimuth=0,
+      elevation=0,
+      velocity=0,
+      enqueue=false;
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -209,9 +209,9 @@ This method is equivalent to `askAction("move_head", Dict(Duration=>duration, En
 
 """
 function askMoveHead(
-   azimuth,
-   elevation,
-   velocity,
+   azimuth=0,
+   elevation=0,
+   velocity=0,
    enqueue=false;
    target_deviceID=nothing,
    target_nickname=nothing,
