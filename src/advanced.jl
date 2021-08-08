@@ -22,7 +22,7 @@ export
     askSetMode(
       modeName="NORMAL",
       enqueue=false;
-         target_deviceID=nothing,
+      target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
 
@@ -151,7 +151,7 @@ end
 
 """
     askChangePosture(
-      finalPosture,
+      finalPosture="sit",
       enquee=false;
       target_deviceID=nothing,
       target_nickname=nothing,
