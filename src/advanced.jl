@@ -151,8 +151,8 @@ end
 
 """
     askChangePosture(
-      finalPosture="sit",
-      enquee=false;
+      finalPosture="sit";
+      enquee=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -175,8 +175,8 @@ This method is equivalent to `askAction("change_posture", Dict(FinalPosture=>fin
 
 """
 function askChangePosture(
-   finalPosture="sit",
-   enqueue=false;
+   finalPosture="sit";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
