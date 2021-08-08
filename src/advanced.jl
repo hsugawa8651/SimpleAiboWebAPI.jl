@@ -311,8 +311,8 @@ end
 
 """
     askPlayDice(
-      category="holdMouthDice",
-      enquee=false;
+      category="holdMouthDice";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -331,8 +331,8 @@ This method is equivalent to `askAction("play_dice", Dict(Category=>category, En
 
 """
 function askPlayDice(
-   category="holdMouthDice",
-   enqueue=false;
+   category="holdMouthDice";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
