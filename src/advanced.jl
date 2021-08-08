@@ -593,8 +593,8 @@ end
 
 """
     askExplore(
-      duration=60,
-      enqueue=false;
+      duration=60;
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -607,8 +607,8 @@ This method is equivalent to `askAction("explore", Dict(Duration=>duration, Enqu
 
 """
 function askExplore(
-   duration=60,
-   enqueue=false;
+   duration=60;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
