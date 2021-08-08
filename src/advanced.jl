@@ -512,8 +512,8 @@ end
 
 """
     askApproachPerson(
-      distanceFromTarget=1,
-      enquee=false;
+      distanceFromTarget=1;
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -526,8 +526,8 @@ This method is equivalent to `askAction("approach_person", Dict(DistanceFromTarg
 
 """
 function askApproachPerson(
-   distanceFromTarget=1,
-   enqueue=false;
+   distanceFromTarget=1;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
