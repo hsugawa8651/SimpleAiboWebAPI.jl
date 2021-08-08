@@ -159,7 +159,7 @@ end
 
 asks `change_posture`.
 
-- `finalPosture` should be one of the following string:
+- `finalPosture` should be one of the following constants:
   - `back`
   - `crouch`
   - `down`
