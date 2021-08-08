@@ -51,6 +51,10 @@ askAction
 getExecution
 ```
 
+```@docs
+isStatusSucceeded
+```
+
 ## Advanced APIs
 
 - All the advanced API contain "api_name" inside.
