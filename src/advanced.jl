@@ -1040,8 +1040,8 @@ end
 
 """
     askReleaseObject(
-      targetType="aibone",
-      enqueue=false;
+      targetType="aibone";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -1055,8 +1055,8 @@ asks `release_object`.
 This method is equivalent to `askAction("release_object", Dict(TargetType=>targetType, Enqueue=>enqueue))`
 """
 function askReleaseObject(
-   targetType="aibone",
-   enqueue=false;
+   targetType="aibone";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
