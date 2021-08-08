@@ -623,6 +623,7 @@ end
 """
     askMoveToPosition(
       targetType="charging_station",
+      enqueue=false;
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
