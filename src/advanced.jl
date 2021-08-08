@@ -542,8 +542,8 @@ end
 
 """
     askChasePerson(
-      chasingDurationMsec=15*1000,
-      enquee=false;
+      chasingDurationMsec=15*1000;
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -556,8 +556,8 @@ This method is equivalent to `askAction("chase_person", Dict(ChasingDurationMsec
 
 """
 function askChasePerson(
-   chasingDurationMsec=15*1000,
-   enqueue=false;
+   chasingDurationMsec=15*1000;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
