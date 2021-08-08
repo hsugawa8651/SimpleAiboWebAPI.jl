@@ -657,9 +657,9 @@ end
 
 """
     askTurnAround(
-      turnSpeed=1,
       turnAngle=0,
-      enqueue=false;
+      turnSpeed=1,
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -671,10 +671,10 @@ asks `turn_around`.
 
 This method is equivalent to `askAction("turn_around", Dict(TurnSpeed=> turnSpeed, TurnAngle=> turnAngle, Enqueue=>enqueue))`
 """
-function askTurnAround(
-   turnSpeed=1,
+function askTurnAround(;
    turnAngle=0,
-   enqueue=false;
+   turnSpeed=1,
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
