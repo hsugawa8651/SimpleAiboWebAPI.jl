@@ -282,8 +282,8 @@ end
 
 """
     askPlayBone(
-      category="holdMouth",
-      enqueue=false;
+      category="holdMouth";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -295,8 +295,8 @@ This method is equivalent to `askAction("play_bone", Dict(Category=>holdMouth, E
 
 """
 function askPlayBone(
-   category="holdMouth",
-   enqueue=false;
+   category="holdMouth";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
