@@ -229,9 +229,9 @@ end
 
 
 """
-    askStay(
+    askStay(;
       duration=60,
-      enqueue=false;
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -243,9 +243,9 @@ asks `stay` for `duration` seconds.
 This method is equivalent to `askAction("stay", Dict(Duration=>duration, Enqueue=>enqueue))`
 
 """
-function askStay(
+function askStay(;
    duration=60,
-   enqueue=false;
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
 	timeoutLimit=10)
