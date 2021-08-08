@@ -20,8 +20,8 @@ export
 
 """
     askSetMode(
-      modeName="NORMAL",
-      enqueue=false;
+      modeName="NORMAL";
+      enqueue=false,
       target_deviceID=nothing,
       target_nickname=nothing,
       timeoutLimit=10)
@@ -36,8 +36,8 @@ This method is equivalent to `askAction("set_mode", Dict(ModeName=>modeName, Enq
 
 """
 function askSetMode(
-   modeName="NORMAL",
-   enqueue=false;
+   modeName="NORMAL";
+   enqueue=false,
    target_deviceID=nothing,
    target_nickname=nothing,
    timeoutLimit=10)
