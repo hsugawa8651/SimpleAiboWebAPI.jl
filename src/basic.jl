@@ -10,6 +10,7 @@ export
 
 using JSON
 using HTTP
+using DataStructures
 
 global currentAccessToken=""
 global currentDevices = []
