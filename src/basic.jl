@@ -10,6 +10,7 @@ export
 
 using JSON
 using HTTP
+using DataStructures
 
 global currentAccessToken=""
 global currentDevices = []
@@ -33,7 +34,8 @@ If successful,
 function getDevices(accessToken::String)
    get_url = join([ BASE_PATH, "devices" ], "/")
    req = HTTP.get(get_url, theHeaders(accessToken) )
-   body = JSON.parse(String(req.body))
+   body = JSON.parse(String(req.body),
+      dicttype=()->DefaultDict{String,Any}(Missing))
    if length(body) == 0
       return Dict()
    end
@@ -190,7 +192,7 @@ function askAction(api_name, arguments = Dict();
    end
    target_deviceId=device["deviceId"]
    askActionSimple(api_name, arguments, 
-      target_deviceId, timeoutLimit)
+      target_deviceId, timeoutLimit=timeoutLimit)
 end
 
 
@@ -211,7 +213,7 @@ asks a device to perform an action, and returns the result by `Dict()`.
 - `timeoutLimit` specifies the limit of timeouts in seconds, and defaults to 10 (seconds).
 """
 function askActionSimple(api_name, arguments, 
-   target_deviceId,
+   target_deviceId;
    timeoutLimit=10)
    global currentAccessToken
 
@@ -224,32 +226,34 @@ function askActionSimple(api_name, arguments,
    end
    the_arguments = JSON.json(arguments) 
    req = HTTP.post(post_url, theHeaders(), body=the_arguments ) 
-   post_result = JSON.parse(String(req.body))
+   post_result = JSON.parse(String(req.body),
+      dicttype=()->DefaultDict{String,Any}(Missing))
    executionId = post_result["executionId"]
    if timeoutLimit <= 0
       return Dict( "executionId" => executionId)
    else
-      return getExecution(executionId, timeoutLimit)
+      return getExecution(executionId, timeoutLimit=timeoutLimit)
    end
 end
 
 
 """
     getExecution(
-      executionId, 
+      executionId; 
       timeoutLimit=10 )
 
 receives the result of `executionId`.
 
 - `timeoutLimit` specifies the limit of timeouts in seconds, and defaults to 10 (seconds).
 """
-function getExecution(executionId, timeoutLimit=10)
+function getExecution(executionId; timeoutLimit=10)
 
    get_result_url = join( [BASE_PATH, "executions", executionId], "/" )
 
    for timeout in 0:timeoutLimit
       req = HTTP.get(get_result_url, theHeaders() )
-      get_result = JSON.parse(String(req.body))
+      get_result = JSON.parse(String(req.body),
+         dicttype=()->DefaultDict{String,Any}(Missing))
       get_status = get_result["status"]
       
       if     get_status == "SUCCEEDED"
