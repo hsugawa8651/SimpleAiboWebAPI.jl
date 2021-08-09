@@ -181,7 +181,7 @@ asks a device to perform an action, and returns the result by `Dict()`.
 """
 function askAction(api_name, arguments = Dict(); 
    target_deviceID=nothing,
-   target_nickname=nothing,
+   target_nickname=nothing;
    timeoutLimit=10)
    device=getDefaultDevice()
    if !isnothing(target_deviceID) || !isnothing(target_nickname)
@@ -191,7 +191,7 @@ function askAction(api_name, arguments = Dict();
    end
    target_deviceId=device["deviceId"]
    askActionSimple(api_name, arguments, 
-      target_deviceId, timeoutLimit)
+      target_deviceId, timeoutLimit=timeoutLimit)
 end
 
 
@@ -212,7 +212,7 @@ asks a device to perform an action, and returns the result by `Dict()`.
 - `timeoutLimit` specifies the limit of timeouts in seconds, and defaults to 10 (seconds).
 """
 function askActionSimple(api_name, arguments, 
-   target_deviceId,
+   target_deviceId;
    timeoutLimit=10)
    global currentAccessToken
 
@@ -231,21 +231,21 @@ function askActionSimple(api_name, arguments,
    if timeoutLimit <= 0
       return Dict( "executionId" => executionId)
    else
-      return getExecution(executionId, timeoutLimit)
+      return getExecution(executionId, timeoutLimit=timeoutLimit)
    end
 end
 
 
 """
     getExecution(
-      executionId, 
+      executionId; 
       timeoutLimit=10 )
 
 receives the result of `executionId`.
 
 - `timeoutLimit` specifies the limit of timeouts in seconds, and defaults to 10 (seconds).
 """
-function getExecution(executionId, timeoutLimit=10)
+function getExecution(executionId; timeoutLimit=10)
 
    get_result_url = join( [BASE_PATH, "executions", executionId], "/" )
 
