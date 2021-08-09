@@ -33,7 +33,8 @@ If successful,
 function getDevices(accessToken::String)
    get_url = join([ BASE_PATH, "devices" ], "/")
    req = HTTP.get(get_url, theHeaders(accessToken) )
-   body = JSON.parse(String(req.body))
+   body = JSON.parse(String(req.body),
+      dicttype=()->DefaultDict{String,Any}(Missing))
    if length(body) == 0
       return Dict()
    end
@@ -224,7 +225,8 @@ function askActionSimple(api_name, arguments,
    end
    the_arguments = JSON.json(arguments) 
    req = HTTP.post(post_url, theHeaders(), body=the_arguments ) 
-   post_result = JSON.parse(String(req.body))
+   post_result = JSON.parse(String(req.body),
+      dicttype=()->DefaultDict{String,Any}(Missing))
    executionId = post_result["executionId"]
    if timeoutLimit <= 0
       return Dict( "executionId" => executionId)
@@ -249,7 +251,8 @@ function getExecution(executionId, timeoutLimit=10)
 
    for timeout in 0:timeoutLimit
       req = HTTP.get(get_result_url, theHeaders() )
-      get_result = JSON.parse(String(req.body))
+      get_result = JSON.parse(String(req.body),
+         dicttype=()->DefaultDict{String,Any}(Missing))
       get_status = get_result["status"]
       
       if     get_status == "SUCCEEDED"
