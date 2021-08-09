@@ -250,7 +250,8 @@ function getExecution(executionId; timeoutLimit=10)
 
    get_result_url = join( [BASE_PATH, "executions", executionId], "/" )
 
-   for timeout in 0:timeoutLimit
+   timeout = 0
+   while true
       req = HTTP.get(get_result_url, theHeaders() )
       get_result = JSON.parse(String(req.body),
          dicttype=()->DefaultDict{String,Any}(Missing))
@@ -260,9 +261,10 @@ function getExecution(executionId; timeoutLimit=10)
          return get_result
       elseif get_status == "FAILED"
          return get_result
-      else
-         sleep(1)
       end
+      timeout += 1
+      (timeout <= timeoutLimit) || break
+      sleep(1)
    end
 
    println("time out")
