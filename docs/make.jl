@@ -34,6 +34,6 @@ makedocs(
     ],
 )
 
-deploydocs(;
+deploydocs(
     repo="github.com/hsugawa8651/SimpleAiboWebAPI.jl",
 )

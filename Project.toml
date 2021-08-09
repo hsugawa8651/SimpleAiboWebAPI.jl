@@ -1,7 +1,7 @@
 name = "SimpleAiboWebAPI"
 uuid = "555a2daa-e723-4fb8-a43f-c5b503b4b2ef"
 authors = ["Hiroharu Sugawara <hsugawa@gmail.com>"]
-version = "0.3.1"
+version = "0.3.2"
 
 [deps]
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
