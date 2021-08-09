@@ -181,7 +181,7 @@ asks a device to perform an action, and returns the result by `Dict()`.
 """
 function askAction(api_name, arguments = Dict(); 
    target_deviceID=nothing,
-   target_nickname=nothing;
+   target_nickname=nothing,
    timeoutLimit=10)
    device=getDefaultDevice()
    if !isnothing(target_deviceID) || !isnothing(target_nickname)
